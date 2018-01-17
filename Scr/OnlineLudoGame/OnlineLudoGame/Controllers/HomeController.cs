@@ -13,5 +13,11 @@ namespace OnlineLudoGame.Controllers
         {
             return View();
         }
+
+        public ActionResult LudoBoard()
+        {
+            return View();
+        }
+        
     }
 }
