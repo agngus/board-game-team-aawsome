@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineLudoGame", "OnlineLudoGame\OnlineLudoGame.csproj", "{10624189-F166-48A5-8A42-356A963DF981}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gameengine", "Gameengine\Gameengine.csproj", "{451B31F9-4452-4686-A6C0-A5F47BEBAFAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameengineTests", "GameengineTests\GameengineTests.csproj", "{CAAD325E-88AB-48D5-A172-6BE63934C449}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{10624189-F166-48A5-8A42-356A963DF981}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10624189-F166-48A5-8A42-356A963DF981}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10624189-F166-48A5-8A42-356A963DF981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{451B31F9-4452-4686-A6C0-A5F47BEBAFAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{451B31F9-4452-4686-A6C0-A5F47BEBAFAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{451B31F9-4452-4686-A6C0-A5F47BEBAFAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{451B31F9-4452-4686-A6C0-A5F47BEBAFAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAAD325E-88AB-48D5-A172-6BE63934C449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAAD325E-88AB-48D5-A172-6BE63934C449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAAD325E-88AB-48D5-A172-6BE63934C449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAAD325E-88AB-48D5-A172-6BE63934C449}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
