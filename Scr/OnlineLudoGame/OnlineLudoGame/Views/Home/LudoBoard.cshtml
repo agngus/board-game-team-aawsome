@@ -1,7 +1,9 @@
 ﻿
 @{	
-	string filePath = (@"C://Users/Sonny/source/repos/GitHub/board-game-team-aawsome/Content/LudoBoard.html");
-	ViewBag.LudoBoard = File.ReadAllText(@filePath);
+       string filePath = (@"C:/Users/agnet/source/repos/board-game-team-aawsome/Content/LudoBoard.html");
+
+    ViewBag.LudoBoard = File.ReadAllText(@filePath);
 }
 
 @Html.Raw(ViewBag.LudoBoard)
+
