@@ -1,0 +1,82 @@
+﻿@model OnlineLudoGame.Models.PlayerGame
+@{
+    ViewBag.Title = "Join";
+}
+<html>
+<head>
+    <title>@ViewBag.Title</title>              
+</head>
+<body>
+    <table border="1" style="width:1600px;background-color:yellow; font-family:'Arial Rounded MT'" >
+        <tr>
+            <td colspan="2" style="text-align:center"><h3>Welcome to our Aawsome Ludo-game!</h3></td>
+        </tr>
+        <tr>
+            <td style="width:1000px; background-color:red;";>
+                <ul> Enter your details: </ul>
+
+
+                @using (Html.BeginForm())
+                {
+                    <div>
+                        @Html.LabelFor(newPlayer => newPlayer.Player.Name)
+                        @Html.TextBoxFor(newPlayer => newPlayer.Player.Name)
+                    </div>
+                    <br />
+                    <div>
+                        @Html.LabelFor(newPlayer => newPlayer.Player.Email)
+                        @Html.TextBoxFor(newPlayer => newPlayer.Player.Email)
+                    </div>
+                    <br />
+                    <div>
+                        @Html.Label("Select a new game:")
+                        @Html.CheckBox("Label", false)
+                        @Html.Label("OR  Join an existing game:")
+                        @Html.CheckBox("Join", false)
+
+                    </div>
+                    <br />
+                    <div>
+                        <h4> Select number of players: </h4>
+                        <br />
+                        @Html.Label("One:")
+                        @Html.RadioButtonFor(newPlayer => newPlayer.Game.Player, "One")
+                        @Html.Label("Two:")
+                        @Html.RadioButtonFor(newPlayer => newPlayer.Game.Player, "Two")
+                        @Html.Label("Three:")
+                        @Html.RadioButtonFor(newPlayer => newPlayer.Game.Player, "Three")
+                        @Html.Label("Four:")
+                        @Html.RadioButtonFor(newPlayer => newPlayer.Game.Player, "Four")
+                    </div>
+                    <br />
+                    <div>
+                        <h4> Choose a color: </h4>
+                        <form action="/html/codes/html_form_handler.cfm" method="get">
+                            <input type="radio" name="preferred_color" value="Red" /> Red
+                            <input type="radio" name="preferred_color" value="Blue" /> Blue
+                            <input type="radio" name="preferred_color" value="Green" /> Green
+                            <input type="radio" name="preferred_color" value="Yellow" /> Yellow
+                        </form>
+
+                    </div>
+
+                    <h3 style="text-align :center"> @Html.ActionLink("Enter the game", "LudoBoard")</h3>
+
+                }  
+                @*Lyckas inte få bilden att hamna i mitten.*@
+            </td>
+            <td style="width:600px; background-color:blue; align-items:stretch ; style="text-align:center;""><img src=" ~/Images/ludo.jpg" /></td>
+    
+
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center; font-size:x-small;background-color:green;" ><h5>© 2018 Team Aawsome </h5>
+
+            </td>
+        </tr>
+
+    </table>
+</body>
+</html>
+
+

@@ -30,5 +30,9 @@ namespace OnlineLudoGame.Controllers
             var newPlayer = new Player();
             return View();
         }
+        public ActionResult StartPage2()
+        {
+            return View();
+        }
     }
 }
