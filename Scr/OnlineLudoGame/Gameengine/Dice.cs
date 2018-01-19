@@ -10,7 +10,7 @@ namespace Gameengine
         {
             int result = 0;
             Random random = new Random();
-            result = random.Next(1, 6);
+            result = random.Next(1, 7);
             return result;
         }   
     }
