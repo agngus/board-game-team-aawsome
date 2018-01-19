@@ -1,0 +1,62 @@
+﻿@model OnlineLudoGame.Models.PlayerGame
+
+@{
+
+    ViewBag.Title = "StartPage";
+}
+<div style="background-color:GreenYellow;width:700px ;border:1px solid black;padding:5px ;">
+
+
+    <h1>Welcome to our Aawsome Ludo-game!</h1>
+    <br />
+
+    <ul> Enter your details: </ul>
+
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.LabelFor(newPlayer => newPlayer.Player.Name)
+            @Html.TextBoxFor(newPlayer => newPlayer.Player.Name)
+        </div>
+        <br />
+        <div>
+            @Html.LabelFor(newPlayer => newPlayer.Player.Email)
+            @Html.TextBoxFor(newPlayer => newPlayer.Player.Email)
+        </div>
+        <br />
+        <div>
+            @Html.Label("Select a new game:")
+            @Html.CheckBox("Label", false)
+            @Html.Label("OR  Join an existing game:")
+            @Html.CheckBox("Join", false) 
+    
+        </div>
+        <div>
+            <h4> Select number of players: </h4>
+            @Html.Label("One:")
+            @Html.RadioButtonFor(newPlayer => newPlayer.Game.Player, "One")
+            @Html.Label("Two:")
+            @Html.RadioButtonFor(newPlayer => newPlayer.Game.Player, "Two")
+            @Html.Label("Three:")
+            @Html.RadioButtonFor(newPlayer => newPlayer.Game.Player, "Three")
+            @Html.Label("Four:")
+            @Html.RadioButtonFor(newPlayer => newPlayer.Game.Player, "Four")
+        </div>
+
+        <div>
+            <h5> Choose a color: </h5>
+            <form action="/html/codes/html_form_handler.cfm" method="get">
+                <input type="radio" name="preferred_color" value="Red" /> Red
+                <input type="radio" name="preferred_color" value="Blue" /> Blue
+                <input type="radio" name="preferred_color" value="Green" /> Green
+                <input type="radio" name="preferred_color" value="Yellow" /> Yellow
+            </form>
+
+        </div>
+        
+        <h4> @Html.ActionLink("Go to game", "LudoBoard")</h4>
+
+    }
+</div>
+
