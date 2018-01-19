@@ -6,6 +6,8 @@ namespace Gameengine
 {
     class GameBoard
     {
-       public CellState[] BoardCells { get; set; }
+        public int GameID { get; set; }
+        public Player[] Players { get; set; }
+        public CellState[] BoardCells { get; set; }
     }
 }
