@@ -6,7 +6,7 @@ namespace Gameengine
 {
     class Dice
     {
-        public int RollDice()
+        public static int RollDice()
         {
             int result = 0;
             Random random = new Random();
