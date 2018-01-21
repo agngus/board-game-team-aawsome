@@ -38,7 +38,7 @@ namespace OnlineLudoGame.Controllers
             //    Name = newPlayer.Name,
             //    Email = newPlayer.Email
             //};            
-            //return View(player);
+            return View();
         }
         public ActionResult StartPage2()
         {
