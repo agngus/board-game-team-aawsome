@@ -16,7 +16,7 @@ namespace OnlineLudoGame.Controllers
         }
         public ActionResult StartPage()
         {
-            if (Request.Cookies["GameSession"] == null )
+            if (Request.Cookies["GameSession"] == null ) 
             {
             HttpCookie cookie = new HttpCookie("GameSession");
             Guid guid = Guid.NewGuid();
@@ -32,14 +32,13 @@ namespace OnlineLudoGame.Controllers
         public ActionResult Create()
         {
             var newPlayer = new Player();
-            Gameengine.Player player = new Gameengine.Player
-            {
-                PlayerID = 1,
-                PlayerName = newPlayer.Name,
-                Email = "test@test.se"
-            };
-            
-            return View();
+            //Player player = new Player
+            //{
+            //    PlayerID = Request.Cookies["GameSession"].Value,
+            //    Name = newPlayer.Name,
+            //    Email = newPlayer.Email
+            //};            
+            //return View(player);
         }
         public ActionResult StartPage2()
         {
