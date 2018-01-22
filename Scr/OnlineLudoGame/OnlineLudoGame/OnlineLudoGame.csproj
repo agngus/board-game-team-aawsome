@@ -120,6 +120,7 @@
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayerGame.cs" />
+    <Compile Include="Models\Temp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +137,7 @@
     <Content Include="Views\Shared\_LudoBoard.cshtml" />
     <Content Include="Views\Home\StartPage.cshtml" />
     <Content Include="Views\Home\StartPage2.cshtml" />
+    <Content Include="Views\Home\StartPage3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -145,6 +147,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gameengine\Gameengine.csproj">
+      <Project>{451b31f9-4452-4686-a6c0-a5f47bebafad}</Project>
+      <Name>Gameengine</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
