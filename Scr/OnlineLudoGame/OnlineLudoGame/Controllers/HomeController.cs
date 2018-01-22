@@ -16,15 +16,15 @@ namespace OnlineLudoGame.Controllers
         }
         public ActionResult StartPage()
         {
-            if (Request.Cookies["GameSession"] == null ) 
+            if (Request.Cookies["GameSession"] == null)
             {
-            HttpCookie cookie = new HttpCookie("GameSession");
-            Guid guid = Guid.NewGuid();
-            cookie.Value = guid.ToString();
-            cookie.Expires = DateTime.Now.AddDays(2);
-            cookie.Path = "";
-            Response.SetCookie(cookie);
-            }            
+                HttpCookie cookie = new HttpCookie("GameSession");
+                Guid guid = Guid.NewGuid();
+                cookie.Value = guid.ToString();
+                cookie.Expires = DateTime.Now.AddDays(2);
+                cookie.Path = "";
+                Response.SetCookie(cookie);
+            }
             return View();
         }
 
@@ -42,7 +42,48 @@ namespace OnlineLudoGame.Controllers
         }
         public ActionResult StartPage2()
         {
+            if (Request.Cookies["GameSession"] == null)
+            {
+                HttpCookie cookie = new HttpCookie("GameSession");
+                Guid guid = Guid.NewGuid();
+                cookie.Value = guid.ToString();
+                cookie.Expires = DateTime.Now.AddDays(2);
+                cookie.Path = "";
+                Response.SetCookie(cookie);
+            } return View();
+        }
+       
+        public ActionResult StartPage3()
+        {
+            if (Request.Cookies["GameSession"] == null)
+            {
+                HttpCookie cookie = new HttpCookie("GameSession");
+                Guid guid = Guid.NewGuid();
+                cookie.Value = guid.ToString();
+                cookie.Expires = DateTime.Now.AddDays(2);
+                cookie.Path = "";
+                Response.SetCookie(cookie);
+              
+            }
+                return View();
+        }
+        [HttpPost]
+        public ActionResult GetTheForm(FormCollection theForm)
+        {
+            string name = theForm["textBox1"];
+           string email = theForm["email"];
+            string color = theForm["preferred_color"];
+            
+            StartGame();
             return View();
         }
+        [Route("LudoBoard /{id}")]
+        public ActionResult StartGame()
+        {
+            string id = "sonny";
+
+            return View();
+        }
+
     }
 }

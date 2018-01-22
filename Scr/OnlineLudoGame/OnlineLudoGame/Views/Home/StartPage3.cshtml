@@ -1,19 +1,51 @@
-﻿
+﻿@model OnlineLudoGame.Models.PlayerGame
 @{
-    ViewBag.Title = "StartPage3";
+    ViewBag.Title = "Join";
 }
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <table border="1" style="width:1600px;background-color:yellow; font-family:'Arial Rounded MT'">
+        <tr>
+            <td colspan="2" style="text-align:center"><h3>Welcome to our Aawsome Ludo-game!</h3></td>
+        </tr>
+        <tr>
+            <td style="width:1000px; background-color:red;" ;>
 
-<h2>StartPage3</h2>
-
-<form action="GetTheForm" method="post">
-    <input type="text" name="texBox1" value="Insert name of your game."></input>    @*this will be the routingname in the URL*@
-    
-    <input type="text" name="email" value="Insert your email"></input>
+                <form action="LudoBoard/sonny" method="post">
+                    <input type="text" name="textBox1" value="Insert email"></input>  <br />
+                    <label>Join:</label>
+                    <select name="join">
+                        <option value="textBox1">sonny</option>
+                        <option value="textBox1">martin</option>
+                        <option value="textBox1">agneta</option>
+                        <option value="textBox1">angelic</option>
+                    </select><br />
+                    <br />
+                    
+                   @* <br />
     <input type="radio" name="preferred_color" value="Red" /> Red
     <input type="radio" name="preferred_color" value="Blue" /> Blue
     <input type="radio" name="preferred_color" value="Green" /> Green
-    <input type="radio" name="preferred_color" value="Yellow" /> Yellow <br />
-    
-    <input type="submit" name="submitbtn" value="Press Me"></input>
-</form>
+    <input type="radio" name="preferred_color" value="Yellow" /> Yellow <br />*@
 
+                    <input type="submit" name="submitbtn" value="Go to game" onclick="GetTheForm()"></input>
+                </form>
+
+            <td style="width:600px; background-color:blue; align-items:stretch ; style=" text-align:center;""><img src=" ~/Images/ludo.jpg" /></td>
+
+
+            
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center; font-size:x-small;background-color:green;">
+                <h5>© 2018 Team Aawsome </h5>
+
+            </td>
+        </tr>
+
+    </table>
+</body>
+</html>
