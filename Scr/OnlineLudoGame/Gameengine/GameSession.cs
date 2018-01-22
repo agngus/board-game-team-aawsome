@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Gameengine
 {
-    class GameBoard
+    class GameSession
     {
         public int GameID { get; set; }
         public Player[] Players { get; set; }
