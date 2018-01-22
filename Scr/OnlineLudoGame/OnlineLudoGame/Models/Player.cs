@@ -9,6 +9,7 @@ namespace OnlineLudoGame.Models
     {
         public string Name { get; set; }
         public string Email { get; set; }
+        public string PlayerID { get; set; }
         public string Color { get; set; }
     }
 }
