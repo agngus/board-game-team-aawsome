@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Gameengine
 {
-    class CellState
+    public class CellState
     {
         public Player PlayerID { get; set; }        
     }
