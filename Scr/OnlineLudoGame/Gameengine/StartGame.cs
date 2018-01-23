@@ -15,7 +15,8 @@ namespace Gameengine
             GameSession gameSession = new GameSession
             {
                 GameID = id,
-                Players = new Player[2]
+                Players = new Player[2],
+                GameBoard = new GameBoard()
             };
             gameSession.Players[0] = p;
             PendingGames.Add(gameSession);
