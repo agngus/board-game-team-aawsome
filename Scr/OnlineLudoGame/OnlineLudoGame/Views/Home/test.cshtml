@@ -1,23 +1,56 @@
-﻿
+﻿@model 
 @{
-    ViewBag.Title = "test";
+   @* ViewBag.Title = "test";*@
 }
 
-<div class="game">
-    <div>
-        <button type="button" class="cell"></button>
-        <button type="button" class="cell"></button>
-        <button type="button" class="cell"></button>
-    </div>                           
-    <div>                            
-        <button type="button" class="cell"></button>
-        <button type="button" class="cell"></button>
-        <button type="button" class="cell"></button>
-    </div>                           
-    <div>                            
-        <button type="button" class="cell"></button>
-        <button type="button" class="cell"></button>
-        <button type="button" class="cell"></button>
+<h2>TicStart</h2>
+
+
+<style>
+    #game {
+        width: 250px;
+        height: 250px;
+        background: #eee;
+        border: 1px solid #ffd800;
+        margin: 50px auto;
+        padding: 10px;
+        overflow: auto;
+    }
+
+        #game div {
+            margin: 0 auto;
+            clear: both;
+            width: 180px;
+        }
+
+        #game button {
+            display: block;
+            float: left;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+        }
+</style>
+
+@using (Html.BeginForm())
+{
+    <div id="game">
+
+        <div>
+            <button id="1" type="submit"></button>
+            <button id="2"type="submit" text="2">2</button>
+            <button id="3"type="submit" value="3">3</button>
+        </div>
+        <div>
+            <button id="4" type="submit" value="4">4</button>
+            <button id="5"type="submit" value="5">5</button>
+            <button id="6" type="submit" value="6">6</button>
+        </div>
+        <div>
+            <button id="7" type="submit" value="7">7</button>
+            <button id="8" type="submit" value="8">8</button>
+            <button id="9" type="submit" value="9">9</button>
+        </div>
     </div>
-</div>
+}
 

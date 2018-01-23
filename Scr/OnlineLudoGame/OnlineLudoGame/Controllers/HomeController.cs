@@ -16,6 +16,7 @@ namespace OnlineLudoGame.Controllers
         }
         public ActionResult Test()
         {
+            ViewBag. x = Gameengine.angelic.text();
             return View();
         }
         public ActionResult StartPage()
@@ -88,6 +89,7 @@ namespace OnlineLudoGame.Controllers
 
             return View();
         }
+
 
     }
 }
