@@ -35,6 +35,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="angelic.cs" />
     <Compile Include="CellState.cs" />
     <Compile Include="GameBoard.cs" />
     <Compile Include="GameSession.cs" />
