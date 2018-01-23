@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Gameengine
 {
-    class GameBoard
+    public class GameBoard
     {
         public CellState[] Board { get; set; }
     }
