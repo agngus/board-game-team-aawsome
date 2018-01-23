@@ -1,6 +1,6 @@
-﻿@model 
+﻿
 @{
-   @* ViewBag.Title = "test";*@
+    ViewBag.Title = "test";
 }
 
 <h2>TicStart</h2>
@@ -37,12 +37,12 @@
     <div id="game">
 
         <div>
-            <button id="1" type="submit"></button>
-            <button id="2"type="submit" text="2">2</button>
-            <button id="3"type="submit" value="3">3</button>
+            <button id="1" name="testname" type="submit" value="1">@ViewBag.x</button>
+            <button id="2"  name="testname" type="submit" value="2">2</button>
+            <button id="3"type="submit" value="3">@ViewBag.O</button>
         </div>
         <div>
-            <button id="4" type="submit" value="4">4</button>
+            <button id="4" type="submit" value="4" ></button>
             <button id="5"type="submit" value="5">5</button>
             <button id="6" type="submit" value="6">6</button>
         </div>
