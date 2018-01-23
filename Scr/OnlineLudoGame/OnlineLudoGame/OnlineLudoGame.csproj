@@ -134,10 +134,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\LudoBoard.cshtml" />
-    <Content Include="Views\Shared\_LudoBoard.cshtml" />
+    <Content Include="Views\Shared\_test.cshtml" />
     <Content Include="Views\Home\StartPage.cshtml" />
     <Content Include="Views\Home\StartPage2.cshtml" />
     <Content Include="Views\Home\StartPage3.cshtml" />
+    <Content Include="Views\Home\test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
