@@ -4,12 +4,11 @@ using System.Text;
 
 namespace Gameengine
 {
-    public class angelic
+    public class martin
     {
-        public static string text(string testname)
+        public static string cirkel()
         {
-            string x = "x";
-            return x;
+            return "O";
         }
     }
 }

@@ -14,9 +14,11 @@ namespace OnlineLudoGame.Controllers
         {
             return View();
         }
-        public ActionResult Test()
+        public ActionResult Test(string testname)
         {
-            ViewBag. x = Gameengine.angelic.text();
+            var currentPlayer = Session["player"];
+            ViewBag.x = Gameengine.angelic.text(testname); //testname har värdet på vilken ruta som klickats.
+            ViewBag.O = Gameengine.martin.cirkel();
             return View();
         }
         public ActionResult StartPage()
