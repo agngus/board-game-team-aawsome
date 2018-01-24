@@ -8,6 +8,7 @@ namespace Gameengine
     {
         public int GameID { get; set; }
         public Player[] Players { get; set; }
-        public Player[] Board = new Player[9];        
+        public Player[] Board = new Player[9];       
+
     }
 }
