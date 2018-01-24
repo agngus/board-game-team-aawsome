@@ -7,6 +7,7 @@ namespace OnlineLudoGame.Models
 {
     public class Board
     {
+        public int GameID { get; set; }
         public string Cell1 { get; set; }
         public string Cell2 { get; set; }
         public string Cell3 { get; set; }
