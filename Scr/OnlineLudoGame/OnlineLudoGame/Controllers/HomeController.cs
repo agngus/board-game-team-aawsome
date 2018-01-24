@@ -45,13 +45,14 @@ namespace OnlineLudoGame.Controllers
                     Side = "O",
                     Email = email
                 };
-                Gameengine.CreateGame.MakeGame(PlayerID, player);
+                Gameengine.CreateGame.MakeGame(1, player);
             }
            
             return View();
         }
-        public ActionResult Game()
+        public ActionResult Game(string testname)
         {
+            var testName = testname;
             Gameengine.Player player1 = new Gameengine.Player
             {
                 PlayerID = "test",
@@ -66,7 +67,7 @@ namespace OnlineLudoGame.Controllers
             };
             Gameengine.GameSession session1 = new Gameengine.GameSession
             {
-                GameID = "1"
+                GameID = 1
             };
             session1.Board[0] = player2;
             session1.Board[1] = player1;

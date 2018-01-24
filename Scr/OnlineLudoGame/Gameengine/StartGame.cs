@@ -11,7 +11,7 @@ namespace Gameengine
         public static List<GameSession> PendingGames = new List<GameSession>();        
 
         // Creates new game
-        public static void MakeGame(string id, Player p)
+        public static void MakeGame(int id, Player p)
         {
             GameSession gameSession = new GameSession
             {
