@@ -114,8 +114,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Board.cs" />
-    <Compile Include="Models\Game.cs" />
-    <Compile Include="Models\PlayerGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -126,11 +124,9 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_test.cshtml" />
     <Content Include="Views\Home\StartPage.cshtml" />
-    <Content Include="Views\Home\test.cshtml" />
     <Content Include="Views\Home\Game.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
