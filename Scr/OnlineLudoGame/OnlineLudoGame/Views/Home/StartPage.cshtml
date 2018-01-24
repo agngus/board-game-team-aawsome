@@ -16,36 +16,36 @@
         <tr>
             <td style="width:1000px; background-color:greenyellow;" ;>
 
-                <ul> Enter your details: </ul>
+                <ul>  </ul>
                 <br />
                 @using (Html.BeginForm())
                 {
                     <div>
-                        @Html.Label("Name")
-                        @Html.TextBox("wadwadwad")
+                        <input type="text" value="Enter your name" name="name "></input>
+                        <input type="text" value="Enter your email" name="email "></input>
+
+                   
                     </div>
                     <br />
-                    <br />
-                    <div>
-                        @Html.Label("Email")
-                        @Html.TextBox("dwadwad")
-                    </div>
-                    <br />
+             
+                  
 
                     <div>
-                        @Html.Label("Select a new game:")
-                        @Html.CheckBox("Label", false)
-                        @Html.Label("     OR       Join an existing game:")
-                        @Html.CheckBox("Label", false)
-
+                        <input type="submit" name="startgamebtn" value="Start a game"></input>
+                        <input type="submit" name="joingamebtn" value="Join an existing game"></input>
+                        @*   @Html.Label("Select a new game:")
+                            @Html.CheckBox("Label", false)
+                            @Html.Label("     OR       Join an existing game:")
+                            @Html.CheckBox("Label", false)
+                        *@
                     </div>
                 }
                 <br />
 
-             
 
-                <input type="submit" name="submitbtn" value="Save your data"></input><br />
-               @* </form>*@
+
+              @* <input type="submit" name="submitbtn" value="Save your data"></input><br />*@
+    
                 <br />
                 <br />
 
