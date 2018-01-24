@@ -6,37 +6,58 @@
 <head>
     <title>@ViewBag.Title</title>
 </head>
+
+
 <body>
-    <table border="1" style="width:1600px;background-color:yellow; font-family:'Arial Rounded MT'">
+    <table border="1" style="width:1600px;background-color:greenyellow; font-family:'Arial Rounded MT'">
         <tr>
-            <td colspan="2" style="text-align:center"><h3>Welcome to our Aawsome Ludo-game!</h3></td>
+            <td colspan="2" style="text-align:center"><h3>Welcome to our Aawsome Tic Tac Toe game!</h3></td>
         </tr>
         <tr>
-            <td style="width:1000px; background-color:red;" ;>
+            <td style="width:1000px; background-color:greenyellow;" ;>
 
-                <form action="LudoBoard/sonny" method="post">
-                    <input type="text" name="textBox1" value="Insert email"></input>  <br />
-                    <label>Join:</label>
-                    <select name="join">
-                        <option value="textBox1">sonny</option>
-                        <option value="textBox1">martin</option>
-                        <option value="textBox1">agneta</option>
-                        <option value="textBox1">angelic</option>
-                    </select><br />
+                <ul> Enter your details: </ul>
+                <br />
+                @using (Html.BeginForm())
+                {
+                    <div>
+                        @Html.LabelFor(newPlayer => newPlayer.Player.Name)
+                        @Html.TextBoxFor(newPlayer => newPlayer.Player.Name)
+                    </div>
                     <br />
-                    
+                    <br />
+                    <div>
+                        @Html.LabelFor(newPlayer => newPlayer.Player.Email)
+                        @Html.TextBoxFor(newPlayer => newPlayer.Player.Email)
+                    </div>
+                    <br />
+
+                    <div>
+                        @Html.Label("Select a new game:")
+                        @Html.CheckBox("Label", false)
+                        @Html.Label("     OR       Join an existing game:")
+                        @Html.CheckBox("Label", false)
+
+                    </div>
+                }
+                <br />
+
+             
+
+                <input type="submit" name="submitbtn" value="Save your data"></input><br />
+               @* </form>*@
+                <br />
+                <br />
+
+                <h4> @Html.ActionLink("Go to game", "test")</h4>
+
+            <td style="width:600px; background-color:blue; align-items:stretch ; style=" text-align:center;""><img src=" ~/Images/Tic_Tac_Toe.png" /></td>
 
 
-                    <input type="submit" name="submitbtn" value="Go to game" onclick="GetTheForm()"></input>
-                </form>
 
-            <td style="width:600px; background-color:blue; align-items:stretch ; style=" text-align:center;""><img src=" ~/Images/ludo.jpg" /></td>
-
-
-            
         </tr>
         <tr>
-            <td colspan="2" style="text-align:center; font-size:x-small;background-color:green;">
+            <td colspan="2" style="text-align:center; font-size:x-small;background-color:greenyellow;">
                 <h5>© 2018 Team Aawsome </h5>
 
             </td>
@@ -44,4 +65,5 @@
 
     </table>
 </body>
+
 </html>
