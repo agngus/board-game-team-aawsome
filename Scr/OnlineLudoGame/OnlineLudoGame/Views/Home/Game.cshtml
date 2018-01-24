@@ -1,0 +1,56 @@
+﻿@model OnlineLudoGame.Models.Board
+@{
+    ViewBag.Title = "Game";
+}
+
+<h2>Game</h2>
+@using (Html.BeginForm())
+{
+<div id="game">
+
+    <div>
+        <button id="1" type="submit" value="1">@Model.Cell1</button>
+        <button id="2" type="submit" value="2">@Model.Cell2</button>
+        <button id="3" type="submit" value="3">@Model.Cell3</button>
+    </div>                                     
+    <div>        
+        <button id="4" type="submit" value="4">@Model.Cell4</button>
+        <button id="5" type="submit" value="5">@Model.Cell5</button>
+        <button id="6" type="submit" value="6">@Model.Cell6</button>
+    </div>                                     
+    <div>        
+        <button id="7" type="submit" value="7">@Model.Cell7</button>
+        <button id="8" type="submit" value="8">@Model.Cell8</button>
+        <button id="9" type="submit" value="9">@Model.Cell9</button>
+    </div>
+</div>
+}
+
+
+<style>
+    #game {
+        width: 250px;
+        height: 250px;
+        background: #eee;
+        border: 1px solid #ffd800;
+        margin: 50px auto;
+        padding: 10px;
+        overflow: auto;
+    }
+
+        #game div {
+            margin: 0 auto;
+            clear: both;
+            width: 180px;
+        }
+
+        #game button {
+            display: block;
+            float: left;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+        }
+</style>
+
+

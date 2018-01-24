@@ -7,6 +7,6 @@ namespace OnlineLudoGame.Models
 {
     public class Game
     {
-        public Player[] Player;
+        //public Player[] Player;
     }
 }

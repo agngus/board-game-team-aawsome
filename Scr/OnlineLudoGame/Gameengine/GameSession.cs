@@ -7,7 +7,8 @@ namespace Gameengine
     public class GameSession
     {
         public int GameID { get; set; }
-        public Player[] Players { get; set; } 
-        public GameBoard GameBoard { get; set; }
+        public Player[] Players { get; set; }
+        public Player[] Board = new Player[9];
+        //public GameBoard GameBoard { get; set; }
     }
 }

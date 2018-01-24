@@ -7,7 +7,7 @@ namespace Gameengine
     public class Player
     {
         public string PlayerID { get; set; }
-        public string PlayerName { get; set; }
+        public string Side { get; set; }
         public string Email { get; set; }
     }
 }

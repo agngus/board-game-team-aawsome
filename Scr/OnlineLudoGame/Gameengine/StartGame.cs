@@ -6,17 +6,16 @@ namespace Gameengine
 {
     public class CreateGame
     {
-        public static List<GameSession> PendingGames { get; set; }
-        public static List<GameSession> GamesInPlay { get; set; }
+        public static List<GameSession> PendingGames { get; set; }        
 
         // Creates new game
-        public static void MakeGame(int id, int numberOfPlayers, Player p)
+        public static void MakeGame(int id, Player p)
         {
             GameSession gameSession = new GameSession
             {
                 GameID = id,
                 Players = new Player[2],
-                GameBoard = new GameBoard()
+                //GameBoard = new GameBoard()
             };
             gameSession.Players[0] = p;
             PendingGames.Add(gameSession);
@@ -38,7 +37,7 @@ namespace Gameengine
                 {
                     if (player != null)
                     {
-                        GamesInPlay.Add(session);
+                        RunningGame.GamesInPlay.Add(session);
                         PendingGames.Remove(session);
                     }
                 }
