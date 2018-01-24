@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web;
+
 
 namespace Gameengine
 {
     public class CreateGame
     {
-        public static List<GameSession> PendingGames { get; set; }        
+        public static List<GameSession> PendingGames = new List<GameSession>();        
 
         // Creates new game
-        public static void MakeGame(int id, Player p)
+        public static void MakeGame(string id, Player p)
         {
             GameSession gameSession = new GameSession
             {
