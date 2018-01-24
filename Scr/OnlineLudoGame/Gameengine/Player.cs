@@ -6,6 +6,7 @@ namespace Gameengine
 {
     public class Player
     {
+        public string Name { get; set; }
         public string PlayerID { get; set; }
         public string Side { get; set; }
         public string Email { get; set; }
