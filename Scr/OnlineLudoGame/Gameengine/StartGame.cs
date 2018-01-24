@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Gameengine
 {
-    public class CreateGame
+    public class StartGame
     {
         public static List<GameSession> PendingGames = new List<GameSession>();        
 

@@ -8,7 +8,7 @@
 @using (Html.BeginForm())
 {
     <div id="game">
-
+       
         <div>
             <button id="1" name="testname" type="submit" value="1">@Model.Cell1</button>
             <button id="2" name="testname" type="submit" value="2">@Model.Cell2</button>
@@ -27,7 +27,7 @@
 
         <br />
         <br />
-        <div id="gameActionDisplay">Message to the user: ex Player 1 Won!</div>
+        <div id="gameActionDisplay">@Model.GameID</div>
     </div>
 }
 @using (Html.BeginForm())
