@@ -12,6 +12,7 @@ namespace OnlineLudoGame.Controllers
     public class HomeController : Controller
     {
         public string PlayerID { get; private set; }
+        public static string GameID { get; set; }
 
         // GET: Home        
         //public ActionResult LudoBoard()
@@ -27,9 +28,9 @@ namespace OnlineLudoGame.Controllers
         //}
         public ActionResult StartPage(string startgamebtn, string joingamebtn, string email)
         {
-            if (Request.Cookies["GameSession"] == null)
+            if (Request.Cookies["User"] == null)
             {
-                HttpCookie cookie = new HttpCookie("GameSession");
+                HttpCookie cookie = new HttpCookie("User");
                 Guid guid = Guid.NewGuid();
                 cookie.Value = guid.ToString();
                 cookie.Expires = DateTime.Now.AddDays(2);
@@ -39,15 +40,31 @@ namespace OnlineLudoGame.Controllers
             }
             if(startgamebtn == "Start a game")
             {
-                Player player = new Player
+                Player player1 = new Player
                 {
-                    PlayerID = Request.Cookies["GameSession"].Value,
+                    PlayerID = Request.Cookies["User"].Value,
                     Side = "O",
                     Email = email
                 };
-                Gameengine.CreateGame.MakeGame(PlayerID, player);
+
+                GameID = Gameengine.GameSession.GenerateRandomGameID();
+                Gameengine.CreateGame.MakeGame(GameID, player1);
+                //Html.ActionLink("Go to game", "Game/" + gameID);
             }
-           
+            if(joingamebtn == "Join a game")
+            {
+                Player player2 = new Player
+                {
+                    PlayerID = Request.Cookies["User"].Value,
+                    Side = "X",
+                    Email = email
+                };
+
+                Gameengine.CreateGame.FindGame(player2);
+
+            }
+
+
             return View();
         }
         public ActionResult Game()
@@ -60,6 +77,8 @@ namespace OnlineLudoGame.Controllers
             };
             Gameengine.GameSession session1 = new Gameengine.GameSession
             {
+                
+
                 GameID = "1"
             };
             session1.Board[0] = player1;

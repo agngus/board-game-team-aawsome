@@ -70,5 +70,12 @@ namespace Gameengine
 
             return "";
         }
+
+        public static string GenerateRandomGameID()
+        {
+            Random random = new Random();
+            string result = random.Next(10000, 50000).ToString();
+            return result;
+        }
     }
 }
