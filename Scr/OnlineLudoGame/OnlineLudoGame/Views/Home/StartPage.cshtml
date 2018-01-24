@@ -1,4 +1,4 @@
-﻿@model OnlineLudoGame.Models.PlayerGame
+﻿
 @{
     ViewBag.Title = "Join";
 }
@@ -21,14 +21,14 @@
                 @using (Html.BeginForm())
                 {
                     <div>
-                        @Html.LabelFor(newPlayer => newPlayer.Player.Name)
-                        @Html.TextBoxFor(newPlayer => newPlayer.Player.Name)
+                        @Html.Label("Name")
+                        @Html.TextBox("wadwadwad")
                     </div>
                     <br />
                     <br />
                     <div>
-                        @Html.LabelFor(newPlayer => newPlayer.Player.Email)
-                        @Html.TextBoxFor(newPlayer => newPlayer.Player.Email)
+                        @Html.Label("Email")
+                        @Html.TextBox("dwadwad")
                     </div>
                     <br />
 
@@ -49,7 +49,7 @@
                 <br />
                 <br />
 
-                <h4> @Html.ActionLink("Go to game", "test")</h4>
+                <h4> @Html.ActionLink("Go to game", "Game")</h4>
 
             <td style="width:600px; background-color:blue; align-items:stretch ; style=" text-align:center;""><img src=" ~/Images/Tic_Tac_Toe.png" /></td>
 

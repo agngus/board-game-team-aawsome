@@ -35,7 +35,7 @@ namespace OnlineLudoGame.Controllers
             }
             return View();
         }
-        public ActionResult Game(/*int gameID*/)
+        public ActionResult Game()
         {
             Gameengine.Player player1 = new Gameengine.Player
             {
@@ -72,38 +72,7 @@ namespace OnlineLudoGame.Controllers
             };
             return View(board);
         }
-
-        [HttpGet]
-        public ActionResult Create()
-        {
-            //var newPlayer = new Player();
-            //Player player = new Player
-            //{
-            //    PlayerID = Request.Cookies["GameSession"].Value,
-            //    Name = newPlayer.Name,
-            //    Email = newPlayer.Email
-            //};            
-            return View();
-        }      
-                
-        [HttpPost]
-        public ActionResult GetTheForm(FormCollection theForm)
-        {
-            string name = theForm["textBox1"];
-            string email = theForm["email"];
-            string color = theForm["preferred_color"];
-
-            StartGame();
-            return View();
-        }
-        [Route("LudoBoard /{id}")]
-        public ActionResult StartGame()
-        {
-            string id = "sonny";
-
-            return View();
-        }
-
-
+               
+       
     }
 }
