@@ -14,19 +14,7 @@ namespace OnlineLudoGame.Controllers
         public string PlayerID { get; private set; }
         public static int GameID { get; set; }
 
-
         // GET: Home        
-        //public ActionResult LudoBoard()
-        //{
-        //    return View();
-        //}
-        //public ActionResult Test(string testname)
-        //{
-        //    var currentPlayer = Session["player"];
-        //    ViewBag.x = Gameengine.angelic.text(testname); //testname har värdet på vilken ruta som klickats.
-        //    ViewBag.O = Gameengine.martin.cirkel();
-        //    return View();
-        //}
         public ActionResult StartPage(string startgamebtn, string joingamebtn, string email, string name)
         {
             if (Request.Cookies["User"] == null)
@@ -37,9 +25,8 @@ namespace OnlineLudoGame.Controllers
                 cookie.Expires = DateTime.Now.AddDays(2);
                 cookie.Path = "";
                 Response.SetCookie(cookie);
-             
             }
-            if(startgamebtn == "Start a game")
+            if (startgamebtn == "Start a game")
             {
                 Player player1 = new Player
                 {
@@ -48,15 +35,11 @@ namespace OnlineLudoGame.Controllers
                     Side = "O",
                     Email = email
                 };
-
                 GameID = Gameengine.GameSession.GenerateRandomGameID();
                 Gameengine.StartGame.MakeGame(GameID, player1);
                 //Html.ActionLink("Go to game", "Game/" + gameID);
-
-               
-				
             }
-            if(joingamebtn == "Join a game")
+            if (joingamebtn == "Join a game")
             {
                 Player player2 = new Player
                 {
@@ -64,65 +47,35 @@ namespace OnlineLudoGame.Controllers
                     Side = "X",
                     Email = email
                 };
-
                 Gameengine.StartGame.FindGame(player2);
-
             }
-
-
             return View();
         }
+
         public ActionResult Game(GameSession gamesession, string testname)
         {
             int gameID = gamesession.GameID;
             var testName = testname;
-            /*
-            Gameengine.Player player1 = new Gameengine.Player
-            {
-                PlayerID = "test",
-                Side = "O",
-                Email = "test@test.se"
-            };
-            Gameengine.Player player2 = new Gameengine.Player
-            {
-                PlayerID = "test2",
-                Side = "X",
-                Email = "test@test.se"
-            };
-            Gameengine.GameSession session1 = new Gameengine.GameSession
-            {
 
-            };
-            session1.Board[0] = player2;
-            session1.Board[1] = player1;
-            session1.Board[2] = player1;
-          //  session1.Board[3] = player1;
-            session1.Board[4] = player2;
-            session1.Board[5] = player1;
-            session1.Board[6] = player1;
-            session1.Board[7] = player1;
-            session1.Board[8] = player2;
-            Gameengine.RunningGame.GamesInPlay.Add(session1);
-    */        
-    int index = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.GameID == gameID);
+            int index = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.GameID == gameID);
             string[] side = new string[9];
             for (int i = 0; i < 9; i++)
             {
                 try
                 {
-                if (Gameengine.RunningGame.GamesInPlay[index].Board[i].Side != null)
-                {
-                    side[i] = Gameengine.RunningGame.GamesInPlay[0].Board[i].Side;
-                }
+                    if (Gameengine.RunningGame.GamesInPlay[index].Board[i].Side != null)
+                    {
+                        side[i] = Gameengine.RunningGame.GamesInPlay[0].Board[i].Side;
+                    }
                 }
                 catch
                 {
                     side[i] = "";
-                }                
+                }
             }
             var board = new Board
             {
-               // GameID = RunningGame.GamesInPlay[index].GameID,
+                // GameID = RunningGame.GamesInPlay[index].GameID,
                 Cell1 = side[0],
                 Cell2 = side[1],
                 Cell3 = side[2],
