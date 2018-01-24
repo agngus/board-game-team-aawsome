@@ -47,9 +47,6 @@ namespace OnlineLudoGame.Controllers
                     Email = email
                 };
 
-                GameID = Gameengine.GameSession.GenerateRandomGameID();
-                Gameengine.CreateGame.MakeGame(GameID, player1);
-                //Html.ActionLink("Go to game", "Game/" + gameID);
             }
             if(joingamebtn == "Join a game")
             {
@@ -67,46 +64,64 @@ namespace OnlineLudoGame.Controllers
 
             return View();
         }
-        public ActionResult Game()
+        public ActionResult Game(string testname, int gameID)
         {
+            var testName = testname;
             Gameengine.Player player1 = new Gameengine.Player
             {
                 PlayerID = "test",
                 Side = "O",
                 Email = "test@test.se"
             };
+            Gameengine.Player player2 = new Gameengine.Player
+            {
+                PlayerID = "test2",
+                Side = "X",
+                Email = "test@test.se"
+            };
             Gameengine.GameSession session1 = new Gameengine.GameSession
             {
-                
 
-                GameID = "1"
             };
-            session1.Board[0] = player1;
+            session1.Board[0] = player2;
             session1.Board[1] = player1;
             session1.Board[2] = player1;
             session1.Board[3] = player1;
-            session1.Board[4] = player1;
+            session1.Board[4] = player2;
             session1.Board[5] = player1;
             session1.Board[6] = player1;
             session1.Board[7] = player1;
-            session1.Board[8] = player1;
+            session1.Board[8] = player2;
             Gameengine.RunningGame.GamesInPlay.Add(session1);
-            //int index = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.GameID == gameID);
+            int index = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.GameID == gameID);
+            string[] side = new string[9];
+            for (int i = 0; i < 9; i++)
+            {
+                try
+                {
+                if (Gameengine.RunningGame.GamesInPlay[0].Board[i].Side != null)
+                {
+                    side[i] = Gameengine.RunningGame.GamesInPlay[0].Board[i].Side;
+                }
+                }
+                catch
+                {
+                    side[i] = "";
+                }                
+            }
             var board = new Board
             {
-                Cell1 = Gameengine.RunningGame.GamesInPlay[0].Board[0].Side,
-                Cell2 = Gameengine.RunningGame.GamesInPlay[0].Board[1].Side,
-                Cell3 = Gameengine.RunningGame.GamesInPlay[0].Board[2].Side,
-                Cell4 = Gameengine.RunningGame.GamesInPlay[0].Board[3].Side,
-                Cell5 = Gameengine.RunningGame.GamesInPlay[0].Board[4].Side,
-                Cell6 = Gameengine.RunningGame.GamesInPlay[0].Board[5].Side,
-                Cell7 = Gameengine.RunningGame.GamesInPlay[0].Board[6].Side,
-                Cell8 = Gameengine.RunningGame.GamesInPlay[0].Board[7].Side,
-                Cell9 = Gameengine.RunningGame.GamesInPlay[0].Board[8].Side,
+                Cell1 = side[0],
+                Cell2 = side[1],
+                Cell3 = side[2],
+                Cell4 = side[3],
+                Cell5 = side[4],
+                Cell6 = side[5],
+                Cell7 = side[6],
+                Cell8 = side[7],
+                Cell9 = side[8]
             };
             return View(board);
         }
-               
-       
     }
 }
