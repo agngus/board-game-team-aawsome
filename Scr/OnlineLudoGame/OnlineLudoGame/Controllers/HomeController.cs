@@ -1,4 +1,5 @@
-﻿using OnlineLudoGame.Models;
+﻿using Gameengine;
+using OnlineLudoGame.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace OnlineLudoGame.Controllers
 {
     public class HomeController : Controller
     {
+        public string PlayerID { get; private set; }
+
         // GET: Home        
         //public ActionResult LudoBoard()
         //{
@@ -22,7 +25,7 @@ namespace OnlineLudoGame.Controllers
         //    ViewBag.O = Gameengine.martin.cirkel();
         //    return View();
         //}
-        public ActionResult StartPage()
+        public ActionResult StartPage(string startgamebtn, string joingamebtn, string email)
         {
             if (Request.Cookies["GameSession"] == null)
             {
@@ -32,7 +35,19 @@ namespace OnlineLudoGame.Controllers
                 cookie.Expires = DateTime.Now.AddDays(2);
                 cookie.Path = "";
                 Response.SetCookie(cookie);
+             
             }
+            if(startgamebtn == "Start a game")
+            {
+                Player player = new Player
+                {
+                    PlayerID = Request.Cookies["GameSession"].Value,
+                    Side = "O",
+                    Email = email
+                };
+                Gameengine.CreateGame.MakeGame(PlayerID, player);
+            }
+           
             return View();
         }
         public ActionResult Game()
@@ -45,7 +60,7 @@ namespace OnlineLudoGame.Controllers
             };
             Gameengine.GameSession session1 = new Gameengine.GameSession
             {
-                GameID = 1
+                GameID = "1"
             };
             session1.Board[0] = player1;
             session1.Board[1] = player1;
