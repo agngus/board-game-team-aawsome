@@ -6,33 +6,29 @@
 <head>
     <title>@ViewBag.Title</title>
 </head>
-
-
 <body>
     <table border="1" style="width:1600px;background-color:greenyellow; font-family:'Arial Rounded MT'">
         <tr>
             <td colspan="2" style="text-align:center"><h3>Welcome to our Aawsome Tic Tac Toe game!</h3></td>
         </tr>
         <tr>
-            <td style="width:1000px; background-color:greenyellow;" ;>
-
-                <ul>  </ul>
+            <td style="width:1000px; background-color:greenyellow;">
+                
+                
                 <br />
                 @using (Html.BeginForm())
                 {
                     <div>
-                        <input type="text" value="Enter your name" name="name "></input>
-                        <input type="text" value="Enter your email" name="email "></input>
-
-                   
+                        <input type="text" value="Enter your name" name="name ">
+                        <input type="text" value="Enter your email" name="email ">
                     </div>
                     <br />
-             
-                  
+
+
 
                     <div>
-                        <input type="submit" name="startgamebtn" value="Start a game"></input>
-                        <input type="submit" name="joingamebtn" value="Join an existing game"></input>
+                        <input type="submit" name="startgamebtn" value="Start a game">
+                        <input type="submit" name="joingamebtn" value="Join an existing game">
                         @*   @Html.Label("Select a new game:")
                             @Html.CheckBox("Label", false)
                             @Html.Label("     OR       Join an existing game:")
@@ -44,8 +40,8 @@
 
 
 
-              @* <input type="submit" name="submitbtn" value="Save your data"></input><br />*@
-    
+                @* <input type="submit" name="submitbtn" value="Save your data"></input><br />*@
+
                 <br />
                 <br />
 

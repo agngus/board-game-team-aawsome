@@ -43,22 +43,28 @@ namespace OnlineLudoGame.Controllers
                 Side = "O",
                 Email = "test@test.se"
             };
+            Gameengine.Player player2 = new Gameengine.Player
+            {
+                PlayerID = "test2",
+                Side = "X",
+                Email = "test@test.se"
+            };
             Gameengine.GameSession session1 = new Gameengine.GameSession
             {
                 GameID = 1
             };
-            session1.Board[0] = player1;
+            session1.Board[0] = player2;
             session1.Board[1] = player1;
             session1.Board[2] = player1;
             session1.Board[3] = player1;
-            session1.Board[4] = player1;
+            session1.Board[4] = player2;
             session1.Board[5] = player1;
             session1.Board[6] = player1;
             session1.Board[7] = player1;
-            session1.Board[8] = player1;
+            session1.Board[8] = player2;
             Gameengine.RunningGame.GamesInPlay.Add(session1);
             //int index = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.GameID == gameID);
-            var board = new Board
+            var board = new Board            
             {
                 Cell1 = Gameengine.RunningGame.GamesInPlay[0].Board[0].Side,
                 Cell2 = Gameengine.RunningGame.GamesInPlay[0].Board[1].Side,
@@ -72,7 +78,5 @@ namespace OnlineLudoGame.Controllers
             };
             return View(board);
         }
-               
-       
     }
 }
