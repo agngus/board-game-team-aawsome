@@ -84,35 +84,8 @@ namespace OnlineLudoGame.Controllers
             //    Email = newPlayer.Email
             //};            
             return View();
-        }
-        public ActionResult StartPage2()
-        {
-            if (Request.Cookies["GameSession"] == null)
-            {
-                HttpCookie cookie = new HttpCookie("GameSession");
-                Guid guid = Guid.NewGuid();
-                cookie.Value = guid.ToString();
-                cookie.Expires = DateTime.Now.AddDays(2);
-                cookie.Path = "";
-                Response.SetCookie(cookie);
-            }
-            return View();
-        }
-
-        public ActionResult StartPage3()
-        {
-            if (Request.Cookies["GameSession"] == null)
-            {
-                HttpCookie cookie = new HttpCookie("GameSession");
-                Guid guid = Guid.NewGuid();
-                cookie.Value = guid.ToString();
-                cookie.Expires = DateTime.Now.AddDays(2);
-                cookie.Path = "";
-                Response.SetCookie(cookie);
-
-            }
-            return View();
-        }
+        }      
+                
         [HttpPost]
         public ActionResult GetTheForm(FormCollection theForm)
         {
