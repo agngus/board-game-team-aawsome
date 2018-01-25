@@ -57,17 +57,37 @@ namespace OnlineLudoGame.Controllers
         }
 
         public ActionResult Game(GameSession gamesession, string testname)
-        {
-            int gameID = gamesession.GameID;
-            var testName = testname;
+        {            
+            int gameID = gamesession.GameID;            
+            //var testName = testname;
+            if (testname != null)
+            {
+                //StartOfTest
+                string currentPlayer = Request.Cookies["User"].Value;
+                int indexPressed = int.Parse(testname) - 1;
+                string playerAction = Request.Cookies["User"].Value;
+                if (playerAction == currentPlayer)
+                {
+                    Gameengine.Player player1 = new Gameengine.Player
+                    {
+                        Name = "test",
+                        PlayerID = Request.Cookies["User"].Value,
+                        Side = "O",
+                        Email = "test"
+                    };
+                    Gameengine.RunningGame.GamesInPlay[0].Board[indexPressed] = player1;
+                }
 
-            int index = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.GameID == gameID);
+                //End of Test
+            }
+            else { }
+            //int index = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.GameID == gameID);
             string[] side = new string[9];
             for (int i = 0; i < 9; i++)
             {
                 try
                 {
-                    if (Gameengine.RunningGame.GamesInPlay[index].Board[i].Side != null)
+                    if (Gameengine.RunningGame.GamesInPlay[0].Board[i].Side != null)
                     {
                         side[i] = Gameengine.RunningGame.GamesInPlay[0].Board[i].Side;
                     }
