@@ -15,7 +15,7 @@ namespace OnlineLudoGame.Controllers
         public static int GameID { get; set; }
 
         // GET: Home        
-        public ActionResult StartPage(string startgamebtn, string joingamebtn, string email, string name)
+        public ActionResult StartPage()
         {
             if (Request.Cookies["User"] == null)
             {
@@ -25,31 +25,35 @@ namespace OnlineLudoGame.Controllers
                 cookie.Expires = DateTime.Now.AddDays(2);
                 cookie.Path = "";
                 Response.SetCookie(cookie);
-            }
-            if (startgamebtn == "Start a game")
+            }            
+            return View();
+        }
+        public ActionResult LoginUser(FormCollection collection, string startbtn, string joinbtn)
+        {
+            if (startbtn == "Start a game")
             {
-                Player player1 = new Player
+                Gameengine.Player player1 = new Gameengine.Player
                 {
-                    Name = name,
+                    Name = collection["nameInput"],
                     PlayerID = Request.Cookies["User"].Value,
                     Side = "O",
-                    Email = email
+                    Email = collection["emailInput"]
                 };
                 GameID = Gameengine.GameSession.GenerateRandomGameID();
                 Gameengine.StartGame.MakeGame(GameID, player1);
-                //Html.ActionLink("Go to game", "Game/" + gameID);
             }
-            if (joingamebtn == "Join a game")
+            if (joinbtn == "Join an existing game")
             {
-                Player player2 = new Player
+                Gameengine.Player player2 = new Gameengine.Player
                 {
+                    Name = collection["nameInput"],
                     PlayerID = Request.Cookies["User"].Value,
                     Side = "X",
-                    Email = email
+                    Email = collection["emailInput"]
                 };
                 Gameengine.StartGame.FindGame(player2);
             }
-            return View();
+            return RedirectToAction("Game");
         }
 
         public ActionResult Game(GameSession gamesession, string testname)
@@ -75,7 +79,7 @@ namespace OnlineLudoGame.Controllers
             }
             var board = new Board
             {
-                // GameID = RunningGame.GamesInPlay[index].GameID,
+                GameID = GameID,
                 Cell1 = side[0],
                 Cell2 = side[1],
                 Cell3 = side[2],

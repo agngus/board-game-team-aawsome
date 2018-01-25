@@ -3,12 +3,12 @@
     ViewBag.Title = "Tic Tac Toe";
 }
 
-@*<h2>Tic Tac Toe</h2>*@
+<center><h2>GameID: @Model.GameID</h2></center>
 
 @using (Html.BeginForm())
 {
     <div id="game">
-       
+
         <div>
             <button id="1" name="testname" type="submit" value="1">@Model.Cell1</button>
             <button id="2" name="testname" type="submit" value="2">@Model.Cell2</button>
@@ -27,7 +27,7 @@
 
         <br />
         <br />
-        <div id="gameActionDisplay">@Model.GameID</div>
+        <div id="gameActionDisplay"></div>
     </div>
 }
 @using (Html.BeginForm())
