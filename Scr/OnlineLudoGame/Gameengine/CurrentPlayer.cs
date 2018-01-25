@@ -4,8 +4,13 @@ using System.Text;
 
 namespace Gameengine
 {
-    class CurrentPlayer
+    public class CurrentPlayer
     {
+        public static string SetStartingPlayer()
+        {
+            return RunningGame.GamesInPlay[0].Players[0].PlayerID;
+        }
+
         public static string SwapCurrentPlayer(GameSession gameSession, Player currentPlayer)
         {
             if (currentPlayer.PlayerID == gameSession.Players[0].PlayerID)

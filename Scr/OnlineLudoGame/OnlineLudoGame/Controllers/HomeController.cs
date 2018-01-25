@@ -13,6 +13,7 @@ namespace OnlineLudoGame.Controllers
     {
         public string PlayerID { get; private set; }
         public static int GameID { get; set; }
+        private static bool IsStart = true;
 
         // GET: Home        
         public ActionResult StartPage()
@@ -46,32 +47,49 @@ namespace OnlineLudoGame.Controllers
             return RedirectToAction("Game");
         }
 
-        public ActionResult Game(GameSession gamesession, string testname)
+        public ActionResult Game(string buttonclickid)
         {
-            int gameID = gamesession.GameID;
-            //var testName = testname;
-            if (testname != null)
+            int gameID = GameID;        
+            if (buttonclickid != null)
+     
             {
                 //StartOfTest
+                              
                 string currentPlayer = Request.Cookies["User"].Value;
-                int indexPressed = int.Parse(testname) - 1;
-                string playerAction = Request.Cookies["User"].Value;
-                if (playerAction == currentPlayer)
+
+                if (IsStart)
                 {
-                    Gameengine.Player player1 = new Gameengine.Player
+                    string startingPlayer = Gameengine.CurrentPlayer.SetStartingPlayer();
+                    if (currentPlayer == startingPlayer)
                     {
-                        Name = "test",
-                        PlayerID = Request.Cookies["User"].Value,
-                        Side = "O",
-                        Email = "test"
-                    };
-                    Gameengine.RunningGame.GamesInPlay[0].Board[indexPressed] = player1;
+                        int indexPressed = int.Parse(buttonclickid) - 1;
+
+
+
+                        Gameengine.Player player1 = new Gameengine.Player
+                        {
+                            Name = "test",
+                            PlayerID = Request.Cookies["User"].Value,
+                            Side = "O",
+                            Email = "test"
+                        };
+                        // add player to index
+                        Gameengine.RunningGame.GamesInPlay[0].Board[indexPressed] = player1;
+
+
+                        IsStart = false;
+                    }
+                }
+               
+               
+                
+               
                 }
 
                 //End of Test
-            }
-            else { }
-            //int index = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.GameID == gameID);
+            
+           
+           // int index = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.GameID == gameID);
             string[] side = new string[9];
             for (int i = 0; i < 9; i++)
             {
@@ -88,7 +106,8 @@ namespace OnlineLudoGame.Controllers
                 }
             }
             var board = new Board
-            {
+            {  // poorly named, first GameID refers to Board model GameID shown to the user
+               // second one refers to field in homecontroller
                 GameID = GameID,
                 Cell1 = side[0],
                 Cell2 = side[1],
