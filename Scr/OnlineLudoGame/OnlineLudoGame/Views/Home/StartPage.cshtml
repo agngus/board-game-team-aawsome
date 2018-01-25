@@ -7,44 +7,39 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <table border="1" style="width:1600px;background-color:greenyellow; font-family:'Arial Rounded MT'">
+    <table border="1" style="width:1600px;background-color:greenyellow; font-family:'Courier New'">
         <tr>
             <td colspan="2" style="text-align:center"><h3>Welcome to our Aawsome Tic Tac Toe game!</h3></td>
         </tr>
         <tr>
             <td style="width:1000px; background-color:greenyellow;">
 
-
                 <br />
                 @using (Html.BeginForm("LoginUser", "Home"))
                 {
-                    <div>                       
-                        @Html.LabelFor(m => m.Name, "Name")
+                    <div>
+                        <h3>  @Html.LabelFor(m => m.Name, "Name")</h3>
                         @Html.TextBoxFor(m => m.Name)
                     </div>
-                    <br />
+                    
                     <div>
-                        @Html.LabelFor(m => m.Email, "Email")
+                        <h3>   @Html.LabelFor(m => m.Email, "Email")</h3>
                         @Html.TextBoxFor(m => m.Email)
                         <br />
-                        <input type="submit" name="startbtn" value="Start a game">
-                        <input type="submit" name="joinbtn" value="Join an existing game">
+
                     </div>
                 }
                 <br />
-
-
-
-                @* <input type="submit" name="submitbtn" value="Save your data"></input><br />*@
-
                 <br />
                 <br />
 
-                <h4> @Html.ActionLink("Go to game", "Game")</h4>
+                <input type="submit" name="startbtn" value="Start a game">
+
+                <h3></h3>
+                
+                <input type="submit" name="joinbtn" value="Join an existing game">
 
             <td style="width:600px; background-color:blue; align-items:stretch ; style=" text-align:center;""><img src=" ~/Images/Tic_Tac_Toe.png" /></td>
-
-
 
         </tr>
         <tr>
