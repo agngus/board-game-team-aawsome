@@ -25,40 +25,30 @@ namespace OnlineLudoGame.Controllers
                 cookie.Expires = DateTime.Now.AddDays(2);
                 cookie.Path = "";
                 Response.SetCookie(cookie);
-            }            
+            }
             return View();
         }
-        public ActionResult LoginUser(FormCollection collection, string startbtn, string joinbtn)
+        public ActionResult LoginUser(Gameengine.Player player, string startbtn, string joinbtn)
         {
             if (startbtn == "Start a game")
             {
-                Gameengine.Player player1 = new Gameengine.Player
-                {
-                    Name = collection["nameInput"],
-                    PlayerID = Request.Cookies["User"].Value,
-                    Side = "O",
-                    Email = collection["emailInput"]
-                };
+                player.PlayerID = PlayerID = Request.Cookies["User"].Value;
+                player.Side = "O";
                 GameID = Gameengine.GameSession.GenerateRandomGameID();
-                Gameengine.StartGame.MakeGame(GameID, player1);
+                Gameengine.StartGame.MakeGame(GameID, player);
             }
             if (joinbtn == "Join an existing game")
             {
-                Gameengine.Player player2 = new Gameengine.Player
-                {
-                    Name = collection["nameInput"],
-                    PlayerID = Request.Cookies["User"].Value,
-                    Side = "X",
-                    Email = collection["emailInput"]
-                };
-                Gameengine.StartGame.FindGame(player2);
+                player.PlayerID = PlayerID = Request.Cookies["User"].Value;
+                player.Side = "X";
+                Gameengine.StartGame.FindGame(player);
             }
             return RedirectToAction("Game");
         }
 
         public ActionResult Game(GameSession gamesession, string testname)
-        {            
-            int gameID = gamesession.GameID;            
+        {
+            int gameID = gamesession.GameID;
             //var testName = testname;
             if (testname != null)
             {
