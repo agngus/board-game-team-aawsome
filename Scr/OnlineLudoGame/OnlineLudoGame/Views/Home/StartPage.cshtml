@@ -1,4 +1,5 @@
-﻿@{
+﻿@model OnlineLudoGame.Models.Player
+@{
     ViewBag.Title = "Join";
 }
 <html>
@@ -15,22 +16,21 @@
 
 
                 <br />
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("LoginUser", "Home"))
                 {
                     <div>
-                        <input type="text" value="Enter your name" name="name">
-                        <input type="text" value="Enter your email" name="email">
+                        @*<input type="text" value="Enter your name" name="name">
+                            <input type="text" value="Enter your email" name="email">*@
+                        @Html.Label("Name")
+                        @Html.TextBox("nameInput")
                     </div>
                     <br />
-
                     <div>
-                        <input type="submit" name="startgamebtn" value="Start a game">
-                        <input type="submit" name="joingamebtn" value="Join an existing game">
-                        @*   @Html.Label("Select a new game:")
-                            @Html.CheckBox("Label", false)
-                            @Html.Label("     OR       Join an existing game:")
-                            @Html.CheckBox("Label", false)
-                        *@
+                        @Html.Label("Email")
+                        @Html.TextBox("emailInput")
+                        <br />
+                        <input type="submit" name="startbtn" value="Start a game">
+                        <input type="submit" name="joinbtn" value="Join an existing game">
                     </div>
                 }
                 <br />
