@@ -2,8 +2,9 @@
 @{
     ViewBag.Title = "Tic Tac Toe";
 }
-
-<center><h2>GameID: @Model.GameID</h2></center>
+@section Styles{<link href="~/Content/gameBackground.css" rel="stylesheet" type="text/css" />}
+<center><h4>GameID: @Model.GameID</h4></center>
+<center><h1>PLAYER 1 TURN</h1></center>
 
 @using (Html.BeginForm())
 {
@@ -25,87 +26,43 @@
             <button id="9" type="submit" name="buttonclickid" value="9">@Model.Cell9</button>
         </div>
 
-        <br />
-        <br />
-        <div id="gameActionDisplay"></div>
+    
     </div>
 }
-@using (Html.BeginForm())
-{
-    <div id="score">
-        <div>
-            <text>hello</text>
-            <text>Your score</text>
-            <text>what ever</text>
 
-
-        </div>
-        <div>
-            <button type="submit" name="newGame" value="newGame">Push for new game</button>
-        </div>
-
-
-    </div>
 
 }
 
 <style>
     #game {
-        width: 250px;
-        height: 250px;
-        background: #eee;
-        border: 3px solid #4cff00;
-        margin: 50px auto;
-        padding: 10px;
+        width: 670px;
+        height: 670px;
+        background: #000000;
+        border: 5px solid black;
+        margin: 40px auto;
+        padding: 35px;
         overflow: auto;
     }
 
         #game div {
             margin: 0 auto;
             clear: both;
-            width: 180px;
+            width: 600px;
         }
 
         #game button {
             display: block;
             float: left;
-            width: 50px;
-            height: 50px;
-            margin: 5px;
+            width: 180px;
+            height: 180px;
+            border: 3px solid #0026ff;
+            font-size: 130px;
+            color: black;
+            margin: 9px;
+            background-color: #0026ff;
         }
 
-    #score {
-        width: 550px;
-        height: 350px;
-        background: #eee;
-        border: 3px solid #4cff00;
-        margin: 10px auto;
-        padding: 10px;
-        overflow: auto;
-    }
-
-        #score div {
-            margin: 0 auto;
-            clear: both;
-            width: 160px;
-            background-color: greenyellow;
-        }
-
-        #score button {
-            display: block;
-            float: right;
-            width: 150px;
-            height: 80px;
-            margin: 5px;
-            align-items: stretch;
-        }
-
-        #score text {
-            float: right;
-            width: 150px;
-            height: 30px;
-            margin: 5px;
-        }
+    
 </style>
 
 
