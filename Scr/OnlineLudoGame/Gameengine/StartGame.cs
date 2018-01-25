@@ -33,17 +33,13 @@ namespace Gameengine
         // If game is full, moves gamesession from PendingGame to GamesInPlay
         public static void GameIsFull()
         {
-            foreach (GameSession session in PendingGames)
-            {
-                foreach (Player player in session.Players)
+            
+            if (PendingGames[0].Players[1] != null)
                 {
-                    if (player != null)
-                    {
-                        RunningGame.GamesInPlay.Add(session);
-                        PendingGames.Remove(session);
-                    }
+                    RunningGame.GamesInPlay.Add(PendingGames[0]);
+                    PendingGames.Remove(PendingGames[0]);
                 }
-            }
+           
         }
     }
 }
