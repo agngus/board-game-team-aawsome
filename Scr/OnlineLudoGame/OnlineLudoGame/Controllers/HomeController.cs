@@ -47,49 +47,9 @@ namespace OnlineLudoGame.Controllers
             return RedirectToAction("Game");
         }
 
-        public ActionResult Game(string buttonclickid)
+        public ActionResult Game()
         {
-            int gameID = GameID;        
-            if (buttonclickid != null)
-     
-            {
-                //StartOfTest
-                              
-                string currentPlayer = Request.Cookies["User"].Value;
-
-                if (IsStart)
-                {
-                    string startingPlayer = Gameengine.CurrentPlayer.SetStartingPlayer();
-                    if (currentPlayer == startingPlayer)
-                    {
-                        int indexPressed = int.Parse(buttonclickid) - 1;
-
-
-
-                        Gameengine.Player player1 = new Gameengine.Player
-                        {
-                            Name = "test",
-                            PlayerID = Request.Cookies["User"].Value,
-                            Side = "O",
-                            Email = "test"
-                        };
-                        // add player to index
-                        Gameengine.RunningGame.GamesInPlay[0].Board[indexPressed] = player1;
-
-
-                        IsStart = false;
-                    }
-                }
-               
-               
-                
-               
-                }
-
-                //End of Test
-            
-           
-           // int index = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.GameID == gameID);
+            //int index = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.GameID == gameID);
             string[] side = new string[9];
             for (int i = 0; i < 9; i++)
             {
@@ -120,6 +80,38 @@ namespace OnlineLudoGame.Controllers
                 Cell9 = side[8]
             };
             return View(board);
+        }
+
+        public ActionResult PlayerMove(string buttonclickid)
+        {
+            string currentPlayer = Request.Cookies["User"].Value;
+            try
+            {
+                if (IsStart == true)
+                {
+                    var session = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.Players[0].PlayerID == currentPlayer);
+                    if (currentPlayer == Gameengine.RunningGame.GamesInPlay[session].Players[0].PlayerID)
+                    {
+                        var player1 = Gameengine.RunningGame.GamesInPlay[session].Players[0];
+                        int indexPressed = int.Parse(buttonclickid) - 1;
+                        Gameengine.RunningGame.GamesInPlay[session].Board[indexPressed] = player1;
+                        IsStart = false;
+                    }
+                }
+                else if (IsStart == false)
+                {
+                    var session = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.Players[1].PlayerID == currentPlayer);
+                    if (currentPlayer == Gameengine.RunningGame.GamesInPlay[session].Players[1].PlayerID)
+                    {
+                        var player2 = Gameengine.RunningGame.GamesInPlay[session].Players[1];
+                        int indexPressed = int.Parse(buttonclickid) - 1;
+                        Gameengine.RunningGame.GamesInPlay[session].Board[indexPressed] = player2;
+                        IsStart = true;
+                    }
+                }
+            }
+            catch { }
+            return RedirectToAction("Game");
         }
     }
 }
