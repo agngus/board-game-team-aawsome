@@ -18,12 +18,12 @@
                 @using (Html.BeginForm("LoginUser", "Home"))
                 { 
                     <div>
-                        @Html.LabelFor(m => m.Name, "Name")
+                        <h3>@Html.LabelFor(m => m.Name, "Name")</h3><br />
                         @Html.TextBoxFor(m => m.Name)
                     </div>
                     <br />
                     <div>
-                        @Html.LabelFor(m => m.Email, "Email")
+                        <h3>@Html.LabelFor(m => m.Email, "Email")</h3><br/>
                         @Html.TextBoxFor(m => m.Email)
                         <br />
                         <input type="submit" name="startbtn" value="Start a game">
