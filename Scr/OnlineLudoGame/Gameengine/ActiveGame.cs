@@ -13,8 +13,11 @@ namespace Gameengine
             GameSession foundSession = null;
             for (int i = 0; i < 2; i++)
             {
-                foundSession = Game.Find(x => x.Players[i].PlayerID == cookieValue);
-                break;
+                var checkNull = Game.Find(x => x.Players[i].PlayerID == cookieValue);
+                if (checkNull != null)
+                {
+                    foundSession = checkNull;
+                }
             }
             return foundSession;
         }

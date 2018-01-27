@@ -10,6 +10,35 @@ namespace Gameengine
         public int GameID { get; set; }
         public User[] Players { get; set; }
         public User[] Board = new User[9];
+        public bool FirstPlayerTurn = true;
+
+        public void Turn(string cookieValue, string buttonClick)
+        {
+            if (this.FirstPlayerTurn == true)
+            {
+                var session = Gameengine.ActiveGame.Game.FindIndex(x => x.Players[0].PlayerID == cookieValue);
+                if (cookieValue == this.Players[0].PlayerID)
+                {
+                    var player1 = this.Players[0];
+                    int indexPressed = int.Parse(buttonClick);
+                    this.Board[indexPressed] = player1;
+                    this.FirstPlayerTurn = false;
+                    Gameengine.ActiveGame.Game[session] = this;
+                }
+            }
+            else if (this.FirstPlayerTurn == false)
+            {
+                var session = Gameengine.ActiveGame.Game.FindIndex(x => x.Players[1].PlayerID == cookieValue);
+                if (cookieValue == this.Players[1].PlayerID)
+                {
+                    var player2 = this.Players[1];
+                    int indexPressed = int.Parse(buttonClick);
+                    this.Board[indexPressed] = player2;
+                    this.FirstPlayerTurn = true;
+                    Gameengine.ActiveGame.Game[session] = this;
+                }
+            }
+        }
 
         public static string WinConditions(User[] boardCells, User currentPlayer)
         {

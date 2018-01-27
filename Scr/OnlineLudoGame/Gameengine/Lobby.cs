@@ -31,16 +31,18 @@ namespace Gameengine
             //GameIsFull();
         }
 
-        //// If game is full, moves gamesession from PendingGame to GamesInPlay
-        //public static void GameIsFull()
-        //{
-
-        //    if (PendingGames[0].Players[1] != null)
-        //    {
-        //        RunningGame.GamesInPlay.Add(PendingGames[0]);
-        //        PendingGames.Remove(PendingGames[0]);
-        //    }
-
-        //}
+        public static GameSession GetSession(string cookieValue)
+        {
+            GameSession foundSession = null;
+            for (int i = 0; i < 2; i++)
+            {
+                foundSession = PendingGame.Find(x => x.Players[i].PlayerID == cookieValue);
+                if (foundSession.Players[i].PlayerID == cookieValue)
+                {
+                    break;
+                }
+            }
+            return foundSession;
+        }
     }
 }
