@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,10 +8,10 @@ namespace Gameengine
     public class GameSession
     {
         public int GameID { get; set; }
-        public Player[] Players { get; set; }
-        public Player[] Board = new Player[9];
+        public User[] Players { get; set; }
+        public User[] Board = new User[9];
 
-        public static string WinConditions(Player[] boardCells, Player currentPlayer)
+        public static string WinConditions(User[] boardCells, User currentPlayer)
         {
             // condition 1
             if (boardCells[0] == currentPlayer && boardCells[1] == currentPlayer && boardCells[2] == currentPlayer)
