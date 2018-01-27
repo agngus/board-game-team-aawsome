@@ -29,35 +29,39 @@ namespace OnlineLudoGame.Controllers
             }
             return View();
         }
-        public ActionResult LoginUser(Gameengine.Player player, string startbtn, string joinbtn)
+        public ActionResult LoginUser(Gameengine.User player, string startbtn, string joinbtn)
         {
             if (startbtn == "Start a game")
             {
                 player.PlayerID = PlayerID = Request.Cookies["User"].Value;
                 player.Side = "O";
                 GameID = Gameengine.GameSession.GenerateRandomGameID();
-                Gameengine.StartGame.MakeGame(GameID, player);
+                Gameengine.Lobby.CreateGame(GameID, player);
             }
             if (joinbtn == "Join an existing game")
             {
                 player.PlayerID = PlayerID = Request.Cookies["User"].Value;
                 player.Side = "X";
-                Gameengine.StartGame.FindGame(player);
+                Gameengine.Lobby.FindGame(player);
             }
             return RedirectToAction("Game");
         }
 
         public ActionResult Game()
         {
-            //int index = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.GameID == gameID);
+            // Find some way to fetch GameID
+            string cookieValue = Request.Cookies["User"].Value;
+            var gameSession = Gameengine.ActiveGame.GetSession(cookieValue);
+
             string[] side = new string[9];
             for (int i = 0; i < 9; i++)
             {
                 try
                 {
-                    if (Gameengine.RunningGame.GamesInPlay[0].Board[i].Side != null)
+                    //if (Gameengine.ActiveGame.Game[0].Board[i].Side != null)
+                    if(gameSession.Board[i].Side != null)
                     {
-                        side[i] = Gameengine.RunningGame.GamesInPlay[0].Board[i].Side;
+                        side[i] = gameSession.Board[i].Side;
                     }
                 }
                 catch
@@ -66,8 +70,7 @@ namespace OnlineLudoGame.Controllers
                 }
             }
             var board = new Board
-            {  // poorly named, first GameID refers to Board model GameID shown to the user
-               // second one refers to field in homecontroller
+            {  
                 GameID = GameID,
                 Cell1 = side[0],
                 Cell2 = side[1],
@@ -89,23 +92,23 @@ namespace OnlineLudoGame.Controllers
             {
                 if (IsStart == true)
                 {
-                    var session = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.Players[0].PlayerID == currentPlayer);
-                    if (currentPlayer == Gameengine.RunningGame.GamesInPlay[session].Players[0].PlayerID)
+                    var session = Gameengine.ActiveGame.Game.FindIndex(x => x.Players[0].PlayerID == currentPlayer);
+                    if (currentPlayer == Gameengine.ActiveGame.Game[session].Players[0].PlayerID)
                     {
-                        var player1 = Gameengine.RunningGame.GamesInPlay[session].Players[0];
+                        var player1 = Gameengine.ActiveGame.Game[session].Players[0];
                         int indexPressed = int.Parse(buttonclickid) - 1;
-                        Gameengine.RunningGame.GamesInPlay[session].Board[indexPressed] = player1;
+                        Gameengine.ActiveGame.Game[session].Board[indexPressed] = player1;
                         IsStart = false;
                     }
                 }
                 else if (IsStart == false)
                 {
-                    var session = Gameengine.RunningGame.GamesInPlay.FindIndex(x => x.Players[1].PlayerID == currentPlayer);
-                    if (currentPlayer == Gameengine.RunningGame.GamesInPlay[session].Players[1].PlayerID)
+                    var session = Gameengine.ActiveGame.Game.FindIndex(x => x.Players[1].PlayerID == currentPlayer);
+                    if (currentPlayer == Gameengine.ActiveGame.Game[session].Players[1].PlayerID)
                     {
-                        var player2 = Gameengine.RunningGame.GamesInPlay[session].Players[1];
+                        var player2 = Gameengine.ActiveGame.Game[session].Players[1];
                         int indexPressed = int.Parse(buttonclickid) - 1;
-                        Gameengine.RunningGame.GamesInPlay[session].Board[indexPressed] = player2;
+                        Gameengine.ActiveGame.Game[session].Board[indexPressed] = player2;
                         IsStart = true;
                     }
                 }

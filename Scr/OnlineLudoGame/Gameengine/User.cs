@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Gameengine
 {
-    public class Player
+    public class User
     {
         public string Name { get; set; }
         public string PlayerID { get; set; }

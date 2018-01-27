@@ -4,7 +4,7 @@
 }
 @section Styles{<link href="~/Content/gameBackground.css" rel="stylesheet" type="text/css" />}
 <center><h4>GameID: @Model.GameID</h4></center>
-<center><h1>PLAYER 1 TURN</h1></center>
+<center><h1>@Model.Player's Turn</h1></center>
 
 @using (Html.BeginForm("PlayerMove", "Home" ))
 {
