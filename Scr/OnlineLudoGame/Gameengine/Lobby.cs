@@ -22,7 +22,7 @@ namespace Gameengine
             PendingGame.Add(gameSession);
         }
 
-        // Find pending game
+        // Finds pending game
         public static void FindGame(User p)
         {
             PendingGame[0].Players[1] = (p);
@@ -31,6 +31,7 @@ namespace Gameengine
             //GameIsFull();
         }
 
+        // Finds GameSession object 
         public static GameSession GetSession(string cookieValue)
         {
             GameSession foundSession = null;

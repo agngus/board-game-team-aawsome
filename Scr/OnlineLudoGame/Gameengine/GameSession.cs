@@ -40,64 +40,91 @@ namespace Gameengine
             }
         }
 
-        public static string WinConditions(User[] boardCells, User currentPlayer)
+        public string[] WriteBoard()
         {
-            // condition 1
-            if (boardCells[0] == currentPlayer && boardCells[1] == currentPlayer && boardCells[2] == currentPlayer)
+            string[] cell = new string[9];
+            for (int i = 0; i < 9; i++)
             {
-                return currentPlayer.Name + " has won!";
+                try
+                {
+                    if (this.Board[i].Side != null)
+                    {
+                        cell[i] = this.Board[i].Side;
+                    }
+                    else if (this == null)
+                    {
+                        cell[i] = "";
+                    }
+                }
+                catch
+                {
+                    cell[i] = "";
+                }
             }
-            // condition 2
-            else if
-              (boardCells[0] == currentPlayer && boardCells[3] == currentPlayer && boardCells[6] == currentPlayer)
-            {
-                return currentPlayer.Name + " has won!";
-            }
-            // condition 3
-            else if
-              (boardCells[6] == currentPlayer && boardCells[7] == currentPlayer && boardCells[8] == currentPlayer)
-            {
-                return currentPlayer.Name + " has won!";
-            }
-            // condition 4
-            else if
-              (boardCells[2] == currentPlayer && boardCells[5] == currentPlayer && boardCells[8] == currentPlayer)
-            {
-                return currentPlayer.Name + " has won!";
-            }
-            // condition 5
-            else if
-              (boardCells[0] == currentPlayer && boardCells[4] == currentPlayer && boardCells[8] == currentPlayer)
-            {
-                return currentPlayer.Name + " has won!";
-            }
-            // condition 6
-            else if
-              (boardCells[2] == currentPlayer && boardCells[4] == currentPlayer && boardCells[6] == currentPlayer)
-            {
-                return currentPlayer.Name + " has won!";
-            }
-            // condition 7
-            else if
-              (boardCells[1] == currentPlayer && boardCells[4] == currentPlayer && boardCells[7] == currentPlayer)
-            {
-                return currentPlayer.Name + " has won!";
-            }
-            // condition 8
-            else if
-              (boardCells[3] == currentPlayer && boardCells[4] == currentPlayer && boardCells[5] == currentPlayer)
-            {
-                return currentPlayer.Name + " has won!";
-            }
-            // all boardspaces used but no win = Draw
-            else if (boardCells[0] != null && boardCells[1] != null && boardCells[2] != null &&
-                    boardCells[3] != null && boardCells[4] != null && boardCells[5] != null &&
-                    boardCells[6] != null && boardCells[7] != null && boardCells[8] != null)
-            {
-                return "Draw";
-            }
+            return cell;
+        }
 
-            return "";
+        public string WinConditions()
+        {
+            string winMessage = "";
+            // condition 1
+            for (int i = 0; i < 2; i++)
+            {
+                if (this.Board[0] == this.Players[i] && this.Board[1] == this.Players[i] && this.Board[2] == this.Players[i])
+                {
+                    winMessage = this.Players[i].Name + " has won!";
+                }
+                // condition 2
+                else if
+                  (this.Board[0] == this.Players[i] && this.Board[3] == this.Players[i] && this.Board[6] == this.Players[i])
+                {
+                    winMessage = this.Players[i].Name + " has won!";
+                }
+                // condition 3
+                else if
+                  (this.Board[6] == this.Players[i] && this.Board[7] == this.Players[i] && this.Board[8] == this.Players[i])
+                {
+                    winMessage = this.Players[i].Name + " has won!";
+                }
+                // condition 4
+                else if
+                  (this.Board[2] == this.Players[i] && this.Board[5] == this.Players[i] && this.Board[8] == this.Players[i])
+                {
+                    winMessage = this.Players[i].Name + " has won!";
+                }
+                // condition 5
+                else if
+                  (this.Board[0] == this.Players[i] && this.Board[4] == this.Players[i] && this.Board[8] == this.Players[i])
+                {
+                    winMessage = this.Players[i].Name + " has won!";
+                }
+                // condition 6
+                else if
+                  (this.Board[2] == this.Players[i] && this.Board[4] == this.Players[i] && this.Board[6] == this.Players[i])
+                {
+                    winMessage = this.Players[i].Name + " has won!";
+                }
+                // condition 7
+                else if
+                  (this.Board[1] == this.Players[i] && this.Board[4] == this.Players[i] && this.Board[7] == this.Players[i])
+                {
+                    winMessage = this.Players[i].Name + " has won!";
+                }
+                // condition 8
+                else if
+                  (this.Board[3] == this.Players[i] && this.Board[4] == this.Players[i] && this.Board[5] == this.Players[i])
+                {
+                    winMessage = this.Players[i].Name + " has won!";
+                }
+                // all boardspaces used but no win = Draw
+                else if (this.Board[0] != null && this.Board[1] != null && this.Board[2] != null &&
+                        this.Board[3] != null && this.Board[4] != null && this.Board[5] != null &&
+                        this.Board[6] != null && this.Board[7] != null && this.Board[8] != null)
+                {
+                    winMessage = "Draw";
+                }
+            }
+            return winMessage;
         }
 
         public static int GenerateRandomGameID()
