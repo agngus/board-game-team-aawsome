@@ -130,6 +130,7 @@
     <Content Include="Views\Shared\_test.cshtml" />
     <Content Include="Views\Home\StartPage.cshtml" />
     <Content Include="Views\Home\Game.cshtml" />
+    <Content Include="Views\Home\TableOfContent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
