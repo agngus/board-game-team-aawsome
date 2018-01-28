@@ -1,6 +1,6 @@
 
 
-# User stories
+# Visitor stories
 
 Use this template when writing the user stories:
 
