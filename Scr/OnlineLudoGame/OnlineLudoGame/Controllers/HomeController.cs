@@ -12,7 +12,7 @@ namespace OnlineLudoGame.Controllers
     public class HomeController : Controller
     {
         public string PlayerID { get; private set; }
-        public static int GameID { get; set; }        
+        public static int GameID { get; set; }
 
         // GET: Home        
         public ActionResult StartPage()
@@ -48,37 +48,25 @@ namespace OnlineLudoGame.Controllers
 
         public ActionResult Game()
         {
-            // Find some way to fetch GameID
             string cookieValue = Request.Cookies["User"].Value;
             var gameSession = Gameengine.ActiveGame.GetSession(cookieValue);
-            string[] side = new string[9];
-            for (int i = 0; i < 9; i++)
+            if (gameSession == null)
             {
-                try
-                {
-                    //if (Gameengine.ActiveGame.Game[0].Board[i].Side != null)
-                    if (gameSession.Board[i].Side != null)
-                    {
-                        side[i] = gameSession.Board[i].Side;
-                    }
-                }
-                catch
-                {
-                    side[i] = "";
-                }
+                gameSession = new GameSession();
             }
+            var cell = gameSession.WriteBoard();
             var board = new Board
             {
-                GameID = GameID,
-                Cell1 = side[0],
-                Cell2 = side[1],
-                Cell3 = side[2],
-                Cell4 = side[3],
-                Cell5 = side[4],
-                Cell6 = side[5],
-                Cell7 = side[6],
-                Cell8 = side[7],
-                Cell9 = side[8]
+                GameID = gameSession.GameID,
+                Cell1 = cell[0],
+                Cell2 = cell[1],
+                Cell3 = cell[2],
+                Cell4 = cell[3],
+                Cell5 = cell[4],
+                Cell6 = cell[5],
+                Cell7 = cell[6],
+                Cell8 = cell[7],
+                Cell9 = cell[8]
             };
             return View(board);
         }
@@ -91,7 +79,7 @@ namespace OnlineLudoGame.Controllers
             {
                 gameSession.Turn(cookieValue, buttonClick);
             }
-            catch { }           
+            catch { }
             return RedirectToAction("Game");
         }
     }
