@@ -21,8 +21,15 @@ namespace Gameengine
                 {
                     var player1 = this.Players[0];
                     int indexPressed = int.Parse(buttonClick);
-                    this.Board[indexPressed] = player1;
-                    this.FirstPlayerTurn = false;
+                    if (this.Board[indexPressed] == null)
+                    {
+                        this.Board[indexPressed] = player1;
+                        this.FirstPlayerTurn = false;
+                    }
+                    else
+                    {
+                        this.FirstPlayerTurn = true;
+                    }
                     Gameengine.ActiveGame.Game[session] = this;
                 }
             }
@@ -33,8 +40,15 @@ namespace Gameengine
                 {
                     var player2 = this.Players[1];
                     int indexPressed = int.Parse(buttonClick);
+                    if (this.Board[indexPressed] == null)
+                    {
                     this.Board[indexPressed] = player2;
                     this.FirstPlayerTurn = true;
+                    }
+                    else
+                    {
+                        this.FirstPlayerTurn = false;
+                    }
                     Gameengine.ActiveGame.Game[session] = this;
                 }
             }
