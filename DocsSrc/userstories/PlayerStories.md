@@ -1,6 +1,6 @@
 
 
-# User stories
+# Player stories
 
 Use this template when writing the user stories:
 * As a player, I want to make the first move, because I started the game.
