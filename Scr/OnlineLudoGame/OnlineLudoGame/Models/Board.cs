@@ -18,5 +18,6 @@ namespace OnlineLudoGame.Models
         public string Cell8 { get; set; }
         public string Cell9 { get; set; }
         public string Player { get; set; }
+        public string Win { get; set; }
     }
 }

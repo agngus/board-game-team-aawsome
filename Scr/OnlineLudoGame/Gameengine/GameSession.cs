@@ -42,8 +42,8 @@ namespace Gameengine
                     int indexPressed = int.Parse(buttonClick);
                     if (this.Board[indexPressed] == null)
                     {
-                    this.Board[indexPressed] = player2;
-                    this.FirstPlayerTurn = true;
+                        this.Board[indexPressed] = player2;
+                        this.FirstPlayerTurn = true;
                     }
                     else
                     {
@@ -80,65 +80,19 @@ namespace Gameengine
 
         public string WinConditions()
         {
-            string winMessage = "";
-            // condition 1
-            for (int i = 0; i < 2; i++)
+            string test = "";
+            try
             {
-                if (this.Board[0] == this.Players[i] && this.Board[1] == this.Players[i] && this.Board[2] == this.Players[i])
+                if (this.Board[0] == this.Players[0])
                 {
-                    winMessage = this.Players[i].Name + " has won!";
-                }
-                // condition 2
-                else if
-                  (this.Board[0] == this.Players[i] && this.Board[3] == this.Players[i] && this.Board[6] == this.Players[i])
-                {
-                    winMessage = this.Players[i].Name + " has won!";
-                }
-                // condition 3
-                else if
-                  (this.Board[6] == this.Players[i] && this.Board[7] == this.Players[i] && this.Board[8] == this.Players[i])
-                {
-                    winMessage = this.Players[i].Name + " has won!";
-                }
-                // condition 4
-                else if
-                  (this.Board[2] == this.Players[i] && this.Board[5] == this.Players[i] && this.Board[8] == this.Players[i])
-                {
-                    winMessage = this.Players[i].Name + " has won!";
-                }
-                // condition 5
-                else if
-                  (this.Board[0] == this.Players[i] && this.Board[4] == this.Players[i] && this.Board[8] == this.Players[i])
-                {
-                    winMessage = this.Players[i].Name + " has won!";
-                }
-                // condition 6
-                else if
-                  (this.Board[2] == this.Players[i] && this.Board[4] == this.Players[i] && this.Board[6] == this.Players[i])
-                {
-                    winMessage = this.Players[i].Name + " has won!";
-                }
-                // condition 7
-                else if
-                  (this.Board[1] == this.Players[i] && this.Board[4] == this.Players[i] && this.Board[7] == this.Players[i])
-                {
-                    winMessage = this.Players[i].Name + " has won!";
-                }
-                // condition 8
-                else if
-                  (this.Board[3] == this.Players[i] && this.Board[4] == this.Players[i] && this.Board[5] == this.Players[i])
-                {
-                    winMessage = this.Players[i].Name + " has won!";
-                }
-                // all boardspaces used but no win = Draw
-                else if (this.Board[0] != null && this.Board[1] != null && this.Board[2] != null &&
-                        this.Board[3] != null && this.Board[4] != null && this.Board[5] != null &&
-                        this.Board[6] != null && this.Board[7] != null && this.Board[8] != null)
-                {
-                    winMessage = "Draw";
+                    test = this.Players[0].Name;
                 }
             }
-            return winMessage;
+            catch
+            {
+                test = "";
+            }
+            return test;
         }
 
         public static int GenerateRandomGameID()
