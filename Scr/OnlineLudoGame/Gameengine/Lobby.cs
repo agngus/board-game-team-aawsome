@@ -28,7 +28,8 @@ namespace Gameengine
                     new User { Side = "-" },
                     new User { Side = "-" },
                     new User { Side = "-" }
-                }
+                },
+                IsActive = true
             };
             gameSession.Players[0] = p;
             PendingGame.Add(gameSession);

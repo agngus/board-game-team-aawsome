@@ -11,7 +11,8 @@ namespace Gameengine
         public User[] Players { get; set; }
         public User[] Board = new User[9];
         public bool FirstPlayerTurn = true;
-        
+        public bool IsActive { get; set; }
+
         //Method for Switching active player.
         public void Turn(string cookieValue, string buttonClick)
         {
@@ -84,50 +85,53 @@ namespace Gameengine
         public string WinConditions()
         {
             string test = "";
-            //try
-            //{
             if (this.Board[0].Side.Equals(this.Board[1].Side) && this.Board[0].Side.Equals(this.Board[2].Side))
             {
-                test = this.Board[0].Name + " WON THE GAME!";
+                test = this.Board[0].Name + " WON THE GAME!";                
             }
             else if (this.Board[3].Side.Equals(this.Board[4].Side) && this.Board[3].Side.Equals(this.Board[5].Side))
             {
-                test = this.Board[3].Name + " WON THE GAME!";
+                test = this.Board[3].Name + " WON THE GAME!";                
             }
             else if (this.Board[6].Side.Equals(this.Board[7].Side) && this.Board[6].Side.Equals(this.Board[8].Side))
             {
-                test = this.Board[6].Name + " WON THE GAME!";
+                test = this.Board[6].Name + " WON THE GAME!";                
             }
             else if (this.Board[0].Side.Equals(this.Board[3].Side) && this.Board[0].Side.Equals(this.Board[6].Side))
             {
-                test = this.Board[0].Name + " WON THE GAME!";
+                test = this.Board[0].Name + " WON THE GAME!";                
             }
             else if (this.Board[1].Side.Equals(this.Board[4].Side) && this.Board[1].Side.Equals(this.Board[7].Side))
             {
-                test = this.Board[1].Name + " WON THE GAME!";
+                test = this.Board[1].Name + " WON THE GAME!";                
             }
             else if (this.Board[2].Side.Equals(this.Board[5].Side) && this.Board[2].Side.Equals(this.Board[8].Side))
             {
-                test = this.Board[2].Name + " WON THE GAME!";
+                test = this.Board[2].Name + " WON THE GAME!";                
             }
             else if (this.Board[0].Side.Equals(this.Board[4].Side) && this.Board[0].Side.Equals(this.Board[8].Side))
             {
-                test = this.Board[0].Name + " WON THE GAME!";
+                test = this.Board[0].Name + " WON THE GAME!";                
             }
             else if (this.Board[2].Side.Equals(this.Board[4].Side) && this.Board[2].Side.Equals(this.Board[6].Side))
             {
-                test = this.Board[2].Name + " WON THE GAME!";
+                test = this.Board[2].Name + " WON THE GAME!";                
             }
             else if (!this.Board[0].Side.Equals("-") && !this.Board[1].Side.Equals("-") && !this.Board[2].Side.Equals("-") &&
                 !this.Board[3].Side.Equals("-") && !this.Board[4].Side.Equals("-") && !this.Board[5].Side.Equals("-") &&
                 !this.Board[6].Side.Equals("-") && !this.Board[7].Side.Equals("-"))
             {
                 test = "IT'S A DRAW";
+                this.IsActive = false;
             }
             if (test == " WON THE GAME!")
             {
                 test = "";
-            }            
+            }
+            else
+            {
+                this.IsActive = false;
+            }
             return test;
         }
 

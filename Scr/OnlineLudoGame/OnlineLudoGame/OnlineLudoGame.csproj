@@ -92,7 +92,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\gameBackground.css" />
-    <Content Include="Content\LudoStyle.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -131,6 +130,7 @@
     <Content Include="Views\Home\StartPage.cshtml" />
     <Content Include="Views\Home\Game.cshtml" />
     <Content Include="Views\Home\TableOfContent.cshtml" />
+    <Content Include="Views\Home\EndGame.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
