@@ -52,12 +52,12 @@ namespace OnlineLudoGame.Controllers
             var gameSession = Gameengine.ActiveGame.GetSession(cookieValue);
             if (gameSession == null)
             {
-                gameSession = new GameSession();
+                gameSession = Gameengine.Lobby.PendingGame.Find(x => x.Players[0].PlayerID == cookieValue);
             }
             var cell = gameSession.WriteBoard();
             var board = new Board
             {
-                GameID = gameSession.GameID,
+                GameID = gameSession.GameID,                
                 Cell1 = cell[0],
                 Cell2 = cell[1],
                 Cell3 = cell[2],
@@ -66,7 +66,8 @@ namespace OnlineLudoGame.Controllers
                 Cell6 = cell[5],
                 Cell7 = cell[6],
                 Cell8 = cell[7],
-                Cell9 = cell[8]
+                Cell9 = cell[8],
+                Win = gameSession.WinConditions()
             };
             return View(board);
         }

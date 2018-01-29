@@ -3,8 +3,7 @@
     ViewBag.Title = "Tic Tac Toe";
 }
 @section Styles{<link href="~/Content/gameBackground.css" rel="stylesheet" type="text/css" />}
-<center><h4>GameID: @Model.GameID</h4></center>
-<center><h1>@Model.Player's Turn</h1></center>
+<center><h2>GameID: @Model.GameID</h2></center>
 
 @using (Html.BeginForm("PlayerMove", "Home"))
 {
@@ -25,6 +24,7 @@
             <button id="9" type="submit" name="buttonClick" value="8">@Model.Cell9</button>
         </div>
     </div>
+    <Center><h1>@Model.Win</h1></Center>
 }
 
 <style>

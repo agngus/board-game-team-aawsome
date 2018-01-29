@@ -8,6 +8,7 @@ namespace Gameengine
     {
         public static List<GameSession> Game = new List<GameSession> { };
 
+        //Method that returns GameSession depending on cookie value
         public static GameSession GetSession(string cookieValue)
         {
             GameSession foundSession = null;
@@ -17,7 +18,7 @@ namespace Gameengine
                 if (checkNull != null)
                 {
                     foundSession = checkNull;
-                }
+                }                
             }
             return foundSession;
         }
