@@ -54,12 +54,23 @@ namespace OnlineLudoGame.Controllers
             {
                 gameSession = Gameengine.Lobby.PendingGame.Find(x => x.Players[0].PlayerID == cookieValue);
             }
-            string win = gameSession.WinConditions();
-            var cell = gameSession.WriteBoard();
-            if (gameSession.IsActive == false)
+            switch (gameSession.State)
             {
-                return RedirectToAction("EndGame", cell);
+                case 1:
+                    break;
+                case 2:
+                    string win = gameSession.WinConditions();
+                    if (win != "")
+                    {
+                        return RedirectToAction("EndGame");
+                    }
+                    break;
+                    //case 3:
+                    //    {
+                    //        return RedirectToAction("EndGame");
+                    //    }
             }
+            var cell = gameSession.WriteBoard();
             var board = new Board
             {
                 GameID = gameSession.GameID,
@@ -75,6 +86,7 @@ namespace OnlineLudoGame.Controllers
             };
             return View(board);
         }
+
         public ActionResult EndGame()
         {
             string cookieValue = Request.Cookies["User"].Value;
@@ -98,7 +110,6 @@ namespace OnlineLudoGame.Controllers
             return View(board);
         }
 
-
         public ActionResult PlayerMove(string buttonClick)
         {
             string cookieValue = Request.Cookies["User"].Value;
@@ -112,7 +123,6 @@ namespace OnlineLudoGame.Controllers
         }
         public ActionResult TableOfContent()
         {
-
             return View();
         }
     }
