@@ -1,9 +1,62 @@
+
 # Board game architecture
 
-* How are your board game build?
+## How are your board game build?
+
+The game starts with a cookie being set in the HomeController.The StartPage view is returned to the user.
+
+The user enters his Player-Model data, and chooses between Starting A Game, and Joining A Game.
+
+User Name and Email is stored in Gameengine/User-class.
+ 
+> If **Start-button** is pressed, the LoginUser-method is called, and sets cookieID as PlayerID and letter "O" as Player.Side.  
+>
+> A GenerateRandomID-method is then called to set the gameID. 
+>
+> CreateGame-method is called to create a gamesession-object.   
+>
+> The player is added to this object and set as player 1 in a PendingGame-array. 
+>
+> The system redirects to Game-mode and loops through the methods there: the GetSession-method checks for an exisiting game, but since it's NULL, it returns empty.
+>
+> It loops though an empty WinConditions and into the Writeboard-method where the array of nine boxes is created and then checked that there is an active gamesession awaiting, which it is now.
+>
+> A Board-object is then created and set to empty strings, instead of NULL, awaiting to be filled by Player-objects clicking on the gameboard.
+>
+> The HomeController then return us to the Game View and the HTML and CSS pages loads.
+>
+> The Gameboard appear.
+>
+>**Player 1 status is now on hold till a new player enters.**
+
+> When **Join-button** is pressed, the FindGame-method is called, User Name and Email is set, cookieID will be PlayerID and letter "X" as Player.Side.
+>
+> FindGame-method is called that sets the Player 2 as the second player in the PendingGame-array.
+>
+> Arrayposition[0] is now filled and is removed from the PendingGame-array.
+>
+> **Player 2 is redirected to the Game View and the GAME CAN BEGIN**.
+
+Player 1 makes his first move. If, for example, button 3 is clicked, the Player-object is set at position 2 in the Board-array, and this cell is blocked from further changes. The letter "O" is marked on the board.
+
+Player 2 makes a buttonclick and the PlayerMove-method is called and checks first with the GetSession-method by the cookieID, which existing game it is a part of.
+
+The Turn-method is called to check if the PlayerID-value is set to "true". In that case the method allows the buttonclick. The method ends with swaping the value to "false" and continues. This is to prevent the same player of making two moves in a row.
+
+The cursor then enters the WinCondition-method to check if the gamesession in this stage has a winning row.
+
+If not, it enters the WriteBoard-method and loops through the Gameboard-array, filling the clicked number in the array with its letter "X". The rest is left empty. The Board-object that was created in the beginning is now getting a box filled.
+
+The HomeControl is now sending us back to the Game View, placing the "X" on the screen for the user, by linking the Gameboard-array to the HTML-buttons.
+
+Player 1 makes his second move and the loop starts again.
+
+If WinConditions are met, the GameSession is redirected to EndGame-method, where it allows the Game-methods to loop one last time to update the opponent a fresh board with a message to the winning player.
+
+GameSession is ended with the cookie expiring.
 
 
-* Which components does your application consist of?
+## Which components does your application consist of?
 
 Two (three/four) Views:
 * StartPage: Where the player enter login data, and choose game.

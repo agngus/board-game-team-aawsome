@@ -29,7 +29,7 @@ namespace Gameengine
                     new User { Side = "-" },
                     new User { Side = "-" }
                 },
-                IsActive = true
+                State = 1
             };
             gameSession.Players[0] = p;
             PendingGame.Add(gameSession);
@@ -39,6 +39,7 @@ namespace Gameengine
         public static void FindGame(User p)
         {
             PendingGame[0].Players[1] = (p);
+            PendingGame[0].State = 2;
             ActiveGame.Game.Add(PendingGame[0]);
             PendingGame.Remove(PendingGame[0]);
             //GameIsFull();

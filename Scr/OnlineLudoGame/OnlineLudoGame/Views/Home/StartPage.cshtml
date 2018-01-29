@@ -19,17 +19,21 @@
                 { 
                     <div>
                         @Html.LabelFor(m => m.Name, "Enter Name")<br />
-                        @Html.TextBoxFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @required = true})
                     </div>
                     <br />
                     <div>
                         @Html.LabelFor(m => m.Email, "Enter Email")<br/>
-                        @Html.TextBoxFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @required = true })
                         <br />
                         <br />
                         <br />
                         <input type="submit" name="startbtn" value="Start a game">
+                        @if(Gameengine.Lobby.PendingGame.Count > 0)
+                        {
                         <input type="submit" name="joinbtn" value="Join an existing game">
+                        }
+
                     </div>
                 }
                 <br />
