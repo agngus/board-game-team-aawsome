@@ -10,3 +10,6 @@
   - name: VisitorStories
   href: userstories/
   homepage: userstories/visitorstories.md
+  - name: WinnerStories
+  href: userstories/
+  homepage: userstories/winnerstories.md
