@@ -19,7 +19,7 @@ namespace Gameengine
                 Players = new User[2],
                 Board = new User[9]
                 {
-                    new User {Side = "-" },
+                    new User { Side = "-" },
                     new User { Side = "-" },
                     new User { Side = "-" },
                     new User { Side = "-" },
