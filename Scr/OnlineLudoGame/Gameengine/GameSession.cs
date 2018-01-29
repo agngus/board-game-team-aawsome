@@ -21,7 +21,7 @@ namespace Gameengine
                 {
                     var player1 = this.Players[0];
                     int indexPressed = int.Parse(buttonClick);
-                    if (this.Board[indexPressed] == null)
+                    if (this.Board[indexPressed].Side == "-")
                     {
                         this.Board[indexPressed] = player1;
                         this.FirstPlayerTurn = false;
@@ -40,7 +40,7 @@ namespace Gameengine
                 {
                     var player2 = this.Players[1];
                     int indexPressed = int.Parse(buttonClick);
-                    if (this.Board[indexPressed] == null)
+                    if (this.Board[indexPressed].Side == "-")
                     {
                         this.Board[indexPressed] = player2;
                         this.FirstPlayerTurn = true;
@@ -61,11 +61,11 @@ namespace Gameengine
             {
                 try
                 {
-                    if (this.Board[i].Side != null)
+                    if (this.Board[i].Side != "-")
                     {
                         cell[i] = this.Board[i].Side;
                     }
-                    else if (this == null)
+                    else if (this.Board[i].Side == "-")
                     {
                         cell[i] = "";
                     }
@@ -81,17 +81,54 @@ namespace Gameengine
         public string WinConditions()
         {
             string test = "";
-            try
+            //try
+            //{
+            if (this.Board[0].Side.Equals(this.Board[1].Side) && this.Board[0].Side.Equals(this.Board[2].Side))
             {
-                if (this.Board[0] == this.Players[0])
-                {
-                    test = this.Players[0].Name;
-                }
+                test = this.Board[0].Name + " WON THE GAME!";
             }
-            catch
+            else if (this.Board[3].Side.Equals(this.Board[4].Side) && this.Board[3].Side.Equals(this.Board[5].Side))
+            {
+                test = this.Board[3].Name + " WON THE GAME!";
+            }
+            else if (this.Board[6].Side.Equals(this.Board[7].Side) && this.Board[6].Side.Equals(this.Board[8].Side))
+            {
+                test = this.Board[6].Name + " WON THE GAME!";
+            }
+            else if (this.Board[0].Side.Equals(this.Board[3].Side) && this.Board[0].Side.Equals(this.Board[6].Side))
+            {
+                test = this.Board[0].Name + " WON THE GAME!";
+            }
+            else if (this.Board[1].Side.Equals(this.Board[4].Side) && this.Board[1].Side.Equals(this.Board[7].Side))
+            {
+                test = this.Board[1].Name + " WON THE GAME!";
+            }
+            else if (this.Board[2].Side.Equals(this.Board[5].Side) && this.Board[2].Side.Equals(this.Board[8].Side))
+            {
+                test = this.Board[2].Name + " WON THE GAME!";
+            }
+            else if (this.Board[0].Side.Equals(this.Board[4].Side) && this.Board[0].Side.Equals(this.Board[8].Side))
+            {
+                test = this.Board[0].Name + " WON THE GAME!";
+            }
+            else if (this.Board[2].Side.Equals(this.Board[4].Side) && this.Board[2].Side.Equals(this.Board[6].Side))
+            {
+                test = this.Board[2].Name + " WON THE GAME!";
+            }
+            else if (!Array.Exists(this.Board, null))
+            {
+                test = "IT'S A DRAW";
+            }
+            if (test == " WON THE GAME!")
             {
                 test = "";
             }
+
+            //}
+            //catch
+            //{
+            //    test = "";
+            //}
             return test;
         }
 

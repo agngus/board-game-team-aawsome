@@ -57,7 +57,7 @@ namespace OnlineLudoGame.Controllers
             var cell = gameSession.WriteBoard();
             var board = new Board
             {
-                GameID = gameSession.GameID,
+                GameID = gameSession.GameID,                
                 Cell1 = cell[0],
                 Cell2 = cell[1],
                 Cell3 = cell[2],
@@ -67,7 +67,7 @@ namespace OnlineLudoGame.Controllers
                 Cell7 = cell[6],
                 Cell8 = cell[7],
                 Cell9 = cell[8],
-                Win = gameSession.WinConditions()                
+                Win = gameSession.WinConditions()
             };
             return View(board);
         }
