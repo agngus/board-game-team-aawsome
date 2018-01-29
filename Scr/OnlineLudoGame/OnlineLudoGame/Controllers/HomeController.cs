@@ -56,9 +56,9 @@ namespace OnlineLudoGame.Controllers
             }
             string win = gameSession.WinConditions();
             var cell = gameSession.WriteBoard();
-            if (gameSession.IsActive == false)
+            if (gameSession.Players[1] != null && gameSession.IsActive == false)
             {
-                return RedirectToAction("EndGame", cell);
+                return RedirectToAction("EndGame");
             }
             var board = new Board
             {
@@ -112,7 +112,6 @@ namespace OnlineLudoGame.Controllers
         }
         public ActionResult TableOfContent()
         {
-
             return View();
         }
     }
