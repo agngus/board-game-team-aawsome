@@ -17,7 +17,18 @@ namespace Gameengine
             {
                 GameID = id,
                 Players = new User[2],
-                Board = new User[9] { new User {Side = "-" }, new User { Side = "-" }, new User { Side = "-" }, new User { Side = "-" }, new User { Side = "-" }, new User { Side = "-" }, new User { Side = "-" }, new User { Side = "-" }, new User { Side = "-" } }
+                Board = new User[9]
+                {
+                    new User {Side = "-" },
+                    new User { Side = "-" },
+                    new User { Side = "-" },
+                    new User { Side = "-" },
+                    new User { Side = "-" },
+                    new User { Side = "-" },
+                    new User { Side = "-" },
+                    new User { Side = "-" },
+                    new User { Side = "-" }
+                }
             };
             gameSession.Players[0] = p;
             PendingGame.Add(gameSession);

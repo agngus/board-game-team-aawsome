@@ -11,7 +11,8 @@ namespace Gameengine
         public User[] Players { get; set; }
         public User[] Board = new User[9];
         public bool FirstPlayerTurn = true;
-
+        
+        //Method for Switching active player.
         public void Turn(string cookieValue, string buttonClick)
         {
             if (this.FirstPlayerTurn == true)
@@ -54,6 +55,7 @@ namespace Gameengine
             }
         }
 
+        //Method that writes GameBoard state to view.
         public string[] WriteBoard()
         {
             string[] cell = new string[9];
@@ -78,6 +80,7 @@ namespace Gameengine
             return cell;
         }
 
+        //Method that checks if winning conditions are met.
         public string WinConditions()
         {
             string test = "";
@@ -115,23 +118,18 @@ namespace Gameengine
             {
                 test = this.Board[2].Name + " WON THE GAME!";
             }
-            else if (!Array.Exists(this.Board, null))
-            {
-                test = "IT'S A DRAW";
-            }
+            //else if ()
+            //{
+            //    test = "IT'S A DRAW";
+            //}
             if (test == " WON THE GAME!")
             {
                 test = "";
-            }
-
-            //}
-            //catch
-            //{
-            //    test = "";
-            //}
+            }            
             return test;
         }
 
+        //Method that generates random GameID
         public static int GenerateRandomGameID()
         {
             Random random = new Random();
