@@ -29,7 +29,11 @@
                         <br />
                         <br />
                         <input type="submit" name="startbtn" value="Start a game">
+                        @if(Gameengine.Lobby.PendingGame.Count > 0)
+                        {
                         <input type="submit" name="joinbtn" value="Join an existing game">
+                        }
+
                     </div>
                 }
                 <br />

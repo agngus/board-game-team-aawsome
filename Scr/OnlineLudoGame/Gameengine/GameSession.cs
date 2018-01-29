@@ -11,7 +11,7 @@ namespace Gameengine
         public User[] Players { get; set; }
         public User[] Board = new User[9];
         public bool FirstPlayerTurn = true;
-        public bool IsActive { get; set; }
+        public int State { get; set; }
 
         //Method for Switching active player.
         public void Turn(string cookieValue, string buttonClick)
@@ -79,49 +79,60 @@ namespace Gameengine
                 }
             }
             return cell;
-        }
+        }       
 
         //Method that checks if winning conditions are met.
         public string WinConditions()
         {
             string winner = "";
-            winner = CheckPattern(0, 1, 2);
-            winner = CheckPattern(3, 4, 5);
-            winner = CheckPattern(6, 7, 8);
-            winner = CheckPattern(0, 3, 6);
-            winner = CheckPattern(1, 4, 7);
-            winner = CheckPattern(2, 5, 8);
-            winner = CheckPattern(0, 4, 8);
-            winner = CheckPattern(2, 4, 6);
-            return winner;
-            
-            //else if (!this.Board[0].Side.Equals("-") && !this.Board[1].Side.Equals("-") && !this.Board[2].Side.Equals("-") &&
-            //    !this.Board[3].Side.Equals("-") && !this.Board[4].Side.Equals("-") && !this.Board[5].Side.Equals("-") &&
-            //    !this.Board[6].Side.Equals("-") && !this.Board[7].Side.Equals("-"))
-            //{
-            //    test = "IT'S A DRAW";
-            //    this.IsActive = false;
-            //}
-            //if (test == " WON THE GAME!")
-            //{
-            //    test = "";
-            //}
-            //else
-            //{
-            //    this.IsActive = false;
-            //}
-            //return test;
-        }
-        public string CheckPattern(int one, int two, int three)
-        {
-            string winnerSide = "";
-            if (this.Board[one].Side.Equals(this.Board[two].Side) && this.Board[one].Side.Equals(this.Board[three].Side))
+            if (this.Board[0].Side.Equals(this.Board[1].Side) && this.Board[0].Side.Equals(this.Board[2].Side))
             {
-                winnerSide = this.Board[one].Name;
-                this.IsActive = false;
+                if (this.Board[0].Name == null) { }
+                else { winner = this.Board[0].Name + " WON THE GAME!"; }
             }
-            return winnerSide;
-        }
+            if (this.Board[3].Side.Equals(this.Board[4].Side) && this.Board[3].Side.Equals(this.Board[5].Side))
+            {
+                if (this.Board[3].Name == null) { }
+                else { winner = this.Board[3].Name + " WON THE GAME!"; }
+            }
+            if (this.Board[6].Side.Equals(this.Board[7].Side) && this.Board[6].Side.Equals(this.Board[8].Side))
+            {
+                if (this.Board[6].Name == null) { }
+                else { winner = this.Board[6].Name + " WON THE GAME!"; }
+            }
+            if (this.Board[0].Side.Equals(this.Board[3].Side) && this.Board[0].Side.Equals(this.Board[6].Side))
+            {
+                if (this.Board[0].Name == null) { }
+                else { winner = this.Board[0].Name + " WON THE GAME!"; }
+            }
+            if (this.Board[1].Side.Equals(this.Board[4].Side) && this.Board[1].Side.Equals(this.Board[7].Side))
+            {
+                if (this.Board[1].Name == null) { }
+                else { winner = this.Board[1].Name + " WON THE GAME!"; }
+            }
+            if (this.Board[2].Side.Equals(this.Board[5].Side) && this.Board[2].Side.Equals(this.Board[8].Side))
+            {
+                if (this.Board[2].Name == null) { }
+                else { winner = this.Board[2].Name + " WON THE GAME!"; }
+            }
+            if (this.Board[0].Side.Equals(this.Board[4].Side) && this.Board[0].Side.Equals(this.Board[8].Side))
+            {
+                if (this.Board[0].Name == null) { }
+                else { winner = this.Board[0].Name + " WON THE GAME!"; }
+            }
+            if (this.Board[2].Side.Equals(this.Board[4].Side) && this.Board[2].Side.Equals(this.Board[6].Side))
+            {
+                if (this.Board[2].Name == null) { }
+                else { winner = this.Board[2].Name + " WON THE GAME!"; }
+            }
+            else if (!this.Board[0].Side.Equals("-") && !this.Board[1].Side.Equals("-") && !this.Board[2].Side.Equals("-") &&
+                !this.Board[3].Side.Equals("-") && !this.Board[4].Side.Equals("-") && !this.Board[5].Side.Equals("-") &&
+                !this.Board[6].Side.Equals("-") && !this.Board[7].Side.Equals("-"))
+            {
+                winner = "IT'S A DRAW";                
+            }          
+            return winner;
+        }       
 
         //Method that generates random GameID
         public static int GenerateRandomGameID()
