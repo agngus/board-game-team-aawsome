@@ -118,10 +118,12 @@ namespace Gameengine
             {
                 test = this.Board[2].Name + " WON THE GAME!";
             }
-            //else if ()
-            //{
-            //    test = "IT'S A DRAW";
-            //}
+            else if (!this.Board[0].Side.Equals("-") && !this.Board[1].Side.Equals("-") && !this.Board[2].Side.Equals("-") &&
+                !this.Board[3].Side.Equals("-") && !this.Board[4].Side.Equals("-") && !this.Board[5].Side.Equals("-") &&
+                !this.Board[6].Side.Equals("-") && !this.Board[7].Side.Equals("-"))
+            {
+                test = "IT'S A DRAW";
+            }
             if (test == " WON THE GAME!")
             {
                 test = "";
