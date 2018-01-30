@@ -129,7 +129,6 @@
     <Content Include="Views\Shared\_test.cshtml" />
     <Content Include="Views\Home\StartPage.cshtml" />
     <Content Include="Views\Home\Game.cshtml" />
-    <Content Include="Views\Home\TableOfContent.cshtml" />
     <Content Include="Views\Home\EndGame.cshtml" />
     <Content Include="toc.yml" />
     <None Include="Web.Debug.config">

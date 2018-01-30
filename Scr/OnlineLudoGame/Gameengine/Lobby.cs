@@ -12,10 +12,10 @@ namespace Gameengine
 
         // Creates new game
         /// <summary>
-        /// 
+        /// Creates a new game with empty boardcells. These will be filled with User-objects when a button is clicked.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="p"></param>
+        /// <param name="id">A random selected number to represent the game</param>
+        /// <param name="p">User object that identifies who clicked the button </param>
         public static void CreateGame(int id, User p)
         {
             GameSession gameSession = new GameSession
