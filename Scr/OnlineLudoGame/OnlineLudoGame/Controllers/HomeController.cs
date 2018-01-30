@@ -28,6 +28,7 @@ namespace OnlineLudoGame.Controllers
             //}
             return View();
         }
+
         public ActionResult LoginUser(Gameengine.User player, string startbtn, string joinbtn)
         {
             if (startbtn == "Start a game")
@@ -117,6 +118,7 @@ namespace OnlineLudoGame.Controllers
             catch { }
             return RedirectToAction("Game");
         }
+
         public ActionResult TableOfContent()
         {
             return View();

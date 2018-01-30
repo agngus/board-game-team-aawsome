@@ -14,6 +14,11 @@ namespace Gameengine
         public int State { get; set; }
 
         //Method for Switching active player.
+        /// <summary>
+        /// Method for Switching active player.
+        /// </summary>
+        /// <param name="cookieValue">The cookievalue identifies who clicked the button.</param>
+        /// <param name="buttonClick">ButtonClick is the number of the box (1-9), that was chosen.</param>
         public void Turn(string cookieValue, string buttonClick)
         {
             if (this.FirstPlayerTurn == true)
@@ -57,6 +62,10 @@ namespace Gameengine
         }
 
         //Method that writes GameBoard state to view.
+        /// <summary>
+        /// Method that writes GameBoard state to view.
+        /// </summary>
+        /// <returns>The board with the latest click.</returns>
         public string[] WriteBoard()
         {
             string[] cell = new string[9];
@@ -79,9 +88,13 @@ namespace Gameengine
                 }
             }
             return cell;
-        }       
+        }
 
         //Method that checks if winning conditions are met.
+        /// <summary>
+        /// Method that checks if winning conditions are met.
+        /// </summary>
+        /// <returns>Feedback if the game is won and by who, or if it's a draw, or if game shall continue.</returns>
         public string WinConditions()
         {
             string winner = "";
@@ -132,9 +145,13 @@ namespace Gameengine
                 winner = "IT'S A DRAW";                
             }          
             return winner;
-        }       
+        }
 
         //Method that generates random GameID
+        /// <summary>
+        /// Method that generates random GameID
+        /// </summary>
+        /// <returns>An id between 10000-50000</returns>
         public static int GenerateRandomGameID()
         {
             Random random = new Random();
