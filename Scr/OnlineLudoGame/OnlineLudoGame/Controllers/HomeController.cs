@@ -17,15 +17,15 @@ namespace OnlineLudoGame.Controllers
         // GET: Home        
         public ActionResult StartPage()
         {
-            if (Request.Cookies["User"] == null)
-            {
+            //if (Request.Cookies["User"] == null)
+            //{
                 HttpCookie cookie = new HttpCookie("User");
                 Guid guid = Guid.NewGuid();
                 cookie.Value = guid.ToString();
                 cookie.Expires = DateTime.Now.AddDays(2);
                 cookie.Path = "";
                 Response.SetCookie(cookie);
-            }
+            //}
             return View();
         }
         public ActionResult LoginUser(Gameengine.User player, string startbtn, string joinbtn)
@@ -102,7 +102,7 @@ namespace OnlineLudoGame.Controllers
                 Cell9 = cell[8],
                 Win = win
             };
-            Response.Cookies["User"].Expires = DateTime.Now.AddDays(-1);
+            //Response.Cookies["User"].Expires = DateTime.Now.AddDays(-1);
             return View(board);
         }
 

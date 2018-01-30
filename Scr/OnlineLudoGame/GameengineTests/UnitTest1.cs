@@ -29,23 +29,23 @@ namespace GameengineTests
         }
 
         [TestMethod]
-        public void FinGameTest()
+        public void FindGameTest()
         {
-            //Arrange
-
+            //Arrange            
+            User TestUser = new User
+            {
+                Name = "test",
+                PlayerID = "test",
+                Side = "O",
+                Email = "test@test.se"
+            };
+            Lobby.CreateGame(2, TestUser);
             //Act
-
+            Lobby.FindGame(TestUser);
+            int gameID = ActiveGame.Game[0].GameID;
             //Assert
+            Assert.AreEqual(2, gameID);
         }
-
-
-
-
-
-
-
-
-
 
         //public const string Localhost = "http://localhost:64599/"; //Ändra till eran lokala hostadress!!
 

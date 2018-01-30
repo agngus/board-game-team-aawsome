@@ -41,8 +41,7 @@ namespace Gameengine
             PendingGame[0].Players[1] = (p);
             PendingGame[0].State = 2;
             ActiveGame.Game.Add(PendingGame[0]);
-            PendingGame.Remove(PendingGame[0]);
-            //GameIsFull();
+            PendingGame.Remove(PendingGame[0]);           
         }
 
         // Finds GameSession object 
