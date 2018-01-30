@@ -10,72 +10,110 @@ namespace GameengineTests
     public class UnitTest1
 
     {
-        public const string Localhost = "http://localhost:64599/"; //Ändra till eran lokala hostadress!!
-        //public static List<GameSession> PendingGames = new List<GameSession>();
-        GameSession gameSession = new GameSession();
-
         [TestMethod]
-        public void CheckIfNewGameHasPlayerOne()
+        public void CreateGameTest()
         {
-            //Arrange 
-
-            int x = 123123;
-            Lobby startGame = new Lobby();
-
-
-            User player = new User { Name = "agge", Email = "asdfasdf", PlayerID = "asdf12312adfs", Side = "O" };
-
-
-            //Act
-            Lobby.CreateGame(x, player);
-            GameSession gameSession = new GameSession
+            //Arrange
+            User TestUser = new User
             {
-                GameID = x,
-                Players = new User[2]
-
+                Name = "test",
+                PlayerID = "test",
+                Side = "O",
+                Email = "test@test.se"
             };
-            gameSession.Players[0] = player;
-            var actualResult = gameSession.Players[0].Side;
-            var expectedResult = gameSession.Players[0].Side == "O";
-
-
+            //Act
+            Lobby.CreateGame(1, TestUser);
+            var gameSession = Lobby.PendingGame[0].Players[0];
             //Assert
-            Assert.IsTrue(expectedResult, actualResult);
-
+            Assert.AreEqual(gameSession.Name, TestUser.Name);
         }
 
         [TestMethod]
-        public void CheckIfCookieIsSet()
+        public void FinGameTest()
         {
-
-            WebRequest request = WebRequest.Create(Localhost + "Home/StartPage/");
-
-
-            var response = (HttpWebResponse)request.GetResponse();
-
-
-            Assert.IsFalse(response.Headers[HttpResponseHeader.SetCookie].EndsWith("ä"));
-        }
-
-        [TestMethod]
-        public void CheckIfAwatingGameHasPlayerTwo()  // Får kanske ta bort denna. det är bara under en sek som pendinggames har två spelare innan den flyttas
-        {
-            List<GameSession> PendingGames = new List<GameSession>();
-            //Arrange 
-            var expectedResult = PendingGames[0].Players[1];
-            Lobby lobby = new Lobby();
-
-            User player = new User { Name = "sonny", Email = "asdf", PlayerID = "312adfs", Side = "X" };
+            //Arrange
 
             //Act
-            Lobby.FindGame(player);
-
-            bool actualResult = PendingGames.Contains(PendingGames[0]);
 
             //Assert
-            Assert.AreEqual(expectedResult, actualResult);
-
         }
+
+
+
+
+
+
+
+
+
+
+        //public const string Localhost = "http://localhost:64599/"; //Ändra till eran lokala hostadress!!
+
+        //public static List<GameSession> PendingGames = new List<GameSession>();
+        //GameSession gameSession = new GameSession();
+
+        //[TestMethod]
+        //public void CheckIfNewGameHasPlayerOne()
+        //{
+        //    //Arrange 
+
+        //    int x = 123123;
+        //    Lobby startGame = new Lobby();
+
+
+        //    User player = new User { Name = "agge", Email = "asdfasdf", PlayerID = "asdf12312adfs", Side = "O" };
+
+
+        //    //Act
+        //    Lobby.CreateGame(x, player);
+        //    GameSession gameSession = new GameSession
+        //    {
+        //        GameID = x,
+        //        Players = new User[2]
+
+        //    };
+        //    gameSession.Players[0] = player;
+        //    var actualResult = gameSession.Players[0].Side;
+        //    var expectedResult = gameSession.Players[0].Side == "O";
+
+
+        //    //Assert
+        //    Assert.IsTrue(expectedResult, actualResult);
+
+        //}       
+
+        //[TestMethod]
+        //public void CheckIfCookieIsSet()
+        //{
+
+        //    WebRequest request = WebRequest.Create(Localhost + "Home/StartPage/");
+
+
+        //    var response = (HttpWebResponse)request.GetResponse();
+
+
+        //    Assert.IsFalse(response.Headers[HttpResponseHeader.SetCookie].EndsWith("ä"));
+        //}
+
+        //[TestMethod]
+        //public void CheckIfAwatingGameHasPlayerTwo()  // Får kanske ta bort denna. det är bara under en sek som pendinggames har två spelare innan den flyttas
+        //{
+        //    List<GameSession> PendingGames = new List<GameSession>();
+        //    //Arrange 
+        //    var expectedResult = PendingGames[0].Players[1];
+        //    Lobby lobby = new Lobby();
+
+        //    User player = new User { Name = "sonny", Email = "asdf", PlayerID = "312adfs", Side = "X" };
+
+        //    //Act
+        //    Lobby.FindGame(player);
+
+        //    bool actualResult = PendingGames.Contains(PendingGames[0]);
+
+        //    //Assert
+        //    Assert.AreEqual(expectedResult, actualResult);
+
+        //}
         //[TestMethod]
         //public void CheckWinConditions()
         //{
@@ -105,6 +143,8 @@ namespace GameengineTests
         //    //Assert
         //    Assert.AreEqual(expectedResult, actualResult);
         //}
+
+
 
     }
 }

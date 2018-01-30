@@ -65,10 +65,6 @@ namespace OnlineLudoGame.Controllers
                         return RedirectToAction("EndGame");
                     }
                     break;
-                    //case 3:
-                    //    {
-                    //        return RedirectToAction("EndGame");
-                    //    }
             }
             var cell = gameSession.WriteBoard();
             var board = new Board
