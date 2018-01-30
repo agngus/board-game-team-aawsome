@@ -5,7 +5,6 @@
 @section Styles{<link href="~/Content/gameBackground.css" rel="stylesheet" type="text/css" />}
 <center><h2>GameID: @Model.GameID</h2></center>
 
-
 <script type="text/javascript">
 function timedRefresh(timeoutPeriod) {
     setTimeout(function() {
@@ -14,7 +13,6 @@ function timedRefresh(timeoutPeriod) {
 }
 </script>
 <body onload="JavaScript:timedRefresh(1000);">
-
 
     @using (Html.BeginForm("PlayerMove", "Home"))
     {
@@ -34,8 +32,7 @@ function timedRefresh(timeoutPeriod) {
                 <button id="8" type="submit" name="buttonClick" value="7">@Model.Cell8</button>
                 <button id="9" type="submit" name="buttonClick" value="8">@Model.Cell9</button>
             </div>
-        </div>
-        //<Center><h1>@Model.Win</h1></Center>
+        </div>      
     }
 </body>
 <style>
@@ -48,13 +45,11 @@ function timedRefresh(timeoutPeriod) {
         padding: 25px;
         overflow: auto;
     }
-
         #game div {
             margin: 0 auto;
             clear: both;
             width: 450px;
         }
-
         #game button {
             display: block;
             float: left;

@@ -3,12 +3,12 @@
 
 ## How are your board game build?
 
-The game starts with a cookie being set in the HomeController.The StartPage view is returned to the user.
-
-The user enters his Player-Model data, and chooses between Starting A Game, and Joining A Game.
-
-User Name and Email is stored in Gameengine/User-class.
- 
+> The game starts with a cookie being set in the HomeController.The StartPage view is returned to the user.
+>
+> The user enters his Player-Model data, and chooses between Starting A Game, and Joining A Game.
+>
+ >User Name and Email is stored in Gameengine/User-class.
+> 
 > If **Start-button** is pressed, the LoginUser-method is called, and sets cookieID as PlayerID and letter "O" as Player.Side.  
 >
 > A GenerateRandomID-method is then called to set the gameID. 
@@ -36,33 +36,32 @@ User Name and Email is stored in Gameengine/User-class.
 > Arrayposition[0] is now filled and is removed from the PendingGame-array.
 >
 > **Player 2 is redirected to the Game View and the GAME CAN BEGIN**.
-
-Player 1 makes his first move. If, for example, button 3 is clicked, the Player-object is set at position 2 in the Board-array, and this cell is blocked from further changes. The letter "O" is marked on the board.
-
-Player 2 makes a buttonclick and the PlayerMove-method is called and checks first with the GetSession-method by the cookieID, which existing game it is a part of.
-
-The Turn-method is called to check if the PlayerID-value is set to "true". In that case the method allows the buttonclick. The method ends with swaping the value to "false" and continues. This is to prevent the same player of making two moves in a row.
-
-The cursor then enters the WinCondition-method to check if the gamesession in this stage has a winning row.
-
-If not, it enters the WriteBoard-method and loops through the Gameboard-array, filling the clicked number in the array with its letter "X". The rest is left empty. The Board-object that was created in the beginning is now getting a box filled.
-
-The HomeControl is now sending us back to the Game View, placing the "X" on the screen for the user, by linking the Gameboard-array to the HTML-buttons.
-
-Player 1 makes his second move and the loop starts again.
-
-If WinConditions are met, the GameSession is redirected to EndGame-method, where it allows the Game-methods to loop one last time to update the opponent a fresh board with a message to the winning player.
-
-GameSession is ended with the cookie expiring.
+>
+> Player 1 makes his first move. If, for example, button 3 is clicked, the Player-object is set at position 2 in the Board-array, and this cell is blocked from further changes. The letter "O" is marked on the board.
+>
+> Player 2 makes a buttonclick and the PlayerMove-method is called and checks first with the GetSession-method by the cookieID, which existing game it is a part of.
+>
+> The Turn-method is called to check if the PlayerID-value is set to "true". In that case the method allows the buttonclick. The method ends with swaping the value to "false" and continues. This is to prevent the same player of making two moves in a row.
+>
+> The cursor then enters the WinCondition-method to check if the gamesession in this stage has a winning row.
+>
+> If not, it enters the WriteBoard-method and loops through the Gameboard-array, filling the clicked number in the array with its letter "X". The rest is left empty. The Board-object that was created in the beginning is now getting a box filled.
+>
+> The HomeControl is now sending us back to the Game View, placing the "X" on the screen for the user, by linking the Gameboard-array to the HTML-buttons.
+>
+> Player 1 makes his second move and the loop starts again.
+>
+> If WinConditions are met, the GameSession is redirected to EndGame-method, where it allows the Game-methods to loop one last time to update the opponent a fresh board with a message to the winning player.
+>
+> GameSession is ended with the cookie expiring.
 
 
 ## Which components does your application consist of?
 
-Two (three/four) Views:
+Three Views:
 * StartPage: Where the player enter login data, and choose game.
 * Game: Where the game takes place.
-* TOC:Links to documentation. NOT DONE YET.
-* EndPage: NOT DONE YET.
+* EndGame: Showing game end with a result message.
 
 Two Models:
 * Player: Contains Name and Email.
@@ -90,9 +89,12 @@ One Gameengine:
 
 Gameengine Tests:
 
-* UnitTest1: NOT FINISHED YET.
+* UnitTest1: Inserted a few tests.
 
 Content:
 
-* 
+* Bootstrap.css
+* GameBackground.css
+* Reset.css
+* Site.css
   
