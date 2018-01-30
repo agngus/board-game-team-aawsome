@@ -19,12 +19,12 @@ namespace OnlineLudoGame.Controllers
         {
             //if (Request.Cookies["User"] == null)
             //{
-                HttpCookie cookie = new HttpCookie("User");
-                Guid guid = Guid.NewGuid();
-                cookie.Value = guid.ToString();
-                cookie.Expires = DateTime.Now.AddDays(2);
-                cookie.Path = "";
-                Response.SetCookie(cookie);
+            HttpCookie cookie = new HttpCookie("User");
+            Guid guid = Guid.NewGuid();
+            cookie.Value = guid.ToString();
+            cookie.Expires = DateTime.Now.AddDays(2);
+            cookie.Path = "";
+            Response.SetCookie(cookie);
             //}
             return View();
         }
@@ -55,17 +55,14 @@ namespace OnlineLudoGame.Controllers
             {
                 gameSession = Gameengine.Lobby.PendingGame.Find(x => x.Players[0].PlayerID == cookieValue);
             }
-            switch (gameSession.State)
+            if (gameSession.ActiveGame == true)
             {
-                case 1:
-                    break;
-                case 2:
-                    string win = gameSession.WinConditions();
-                    if (win != "")
-                    {
-                        return RedirectToAction("EndGame");
-                    }
-                    break;
+                string win = gameSession.WinConditions();
+                if (win != "")
+                {
+                    return RedirectToAction("EndGame");
+                }
+                else { }
             }
             var cell = gameSession.WriteBoard();
             var board = new Board
@@ -103,7 +100,6 @@ namespace OnlineLudoGame.Controllers
                 Cell9 = cell[8],
                 Win = win
             };
-            //Response.Cookies["User"].Expires = DateTime.Now.AddDays(-1);
             return View(board);
         }
 
