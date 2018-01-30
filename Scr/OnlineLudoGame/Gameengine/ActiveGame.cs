@@ -7,8 +7,12 @@ namespace Gameengine
     public class ActiveGame
     {
         public static List<GameSession> Game = new List<GameSession> { };
-
-        //Method that returns GameSession depending on cookie value
+        
+        /// <summary>
+        /// Method that returns GameSession depending on cookie value
+        /// </summary>
+        /// <param name="cookieValue">Beskriving av cookie</param>
+        /// <returns>Enspel session</returns>
         public static GameSession GetSession(string cookieValue)
         {
             GameSession foundSession = null;

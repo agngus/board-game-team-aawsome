@@ -11,6 +11,11 @@ namespace Gameengine
         public static List<GameSession> PendingGame = new List<GameSession>();
 
         // Creates new game
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="p"></param>
         public static void CreateGame(int id, User p)
         {
             GameSession gameSession = new GameSession
@@ -36,6 +41,10 @@ namespace Gameengine
         }
 
         // Finds pending game
+        /// <summary>
+        /// Finds a pending game for player 2 to join. Chooses the first in the array.
+        /// </summary>
+        /// <param name="p">Player object</param>
         public static void FindGame(User p)
         {
             PendingGame[0].Players[1] = (p);
@@ -45,6 +54,11 @@ namespace Gameengine
         }
 
         // Finds GameSession object 
+        /// <summary>
+        /// Finds GameSession object by looping current session arrays.
+        /// </summary>
+        /// <param name="cookieValue">PlayerID is set to its CookieID</param>
+        /// <returns>The session that the player is a part of.</returns>
         public static GameSession GetSession(string cookieValue)
         {
             GameSession foundSession = null;
