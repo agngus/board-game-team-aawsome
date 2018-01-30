@@ -1,9 +1,11 @@
+
+
 - name: PlayerStories
   href: userstories/
-  homepage: userstories/playerstories.md
+  homepage: playerstories.md
 - name: VisitorStories
   href: userstories/
-  homepage: userstories/visitorstories.md
+  homepage: visitorstories.md
 - name: WinnerStories
   href: userstories/
-  homepage: userstories/winnerstories.md
+  homepage: winnerstories.md
