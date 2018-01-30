@@ -11,7 +11,7 @@ namespace Gameengine
         public User[] Players { get; set; }
         public User[] Board = new User[9];
         public bool FirstPlayerTurn = true;
-        public int State { get; set; }
+        public bool ActiveGame { get; set; }
 
         //Method for Switching active player.
         /// <summary>
