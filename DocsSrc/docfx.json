@@ -4,13 +4,14 @@
       "src": [
         {
           "files": [
-            "../src/GameEngine/**.csproj"
+            "**/**.csproj"
           ],
           "exclude": [
             "**/obj/**",
             "**/bin/**",
             "_site/**"
-          ]
+          ],
+	  "src": "../scr/OnlineLudoGame/Gameengine"
         }
       ],
       "dest": "gameengine",

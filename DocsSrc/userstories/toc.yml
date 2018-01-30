@@ -1,15 +1,9 @@
-- name: Architechture
-  href: architecture/
-  homepage: architecture/index.md
-  - name: Gameengine Documentation
-  href: gameengine/
-  homepage: gameengine/index.md
 - name: PlayerStories
   href: userstories/
   homepage: userstories/playerstories.md
-  - name: VisitorStories
+- name: VisitorStories
   href: userstories/
   homepage: userstories/visitorstories.md
-  - name: WinnerStories
+- name: WinnerStories
   href: userstories/
   homepage: userstories/winnerstories.md

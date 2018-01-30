@@ -76,35 +76,67 @@ namespace GameengineTests
             Assert.AreEqual(expectedResult, actualResult);
 
         }
-        //[TestMethod]
-        //public void CheckWinConditions()
-        //{
-        //    //Arrange 
-        //    Gameengine.Player[] player = 
-        //        {
-        //        new Player {Name = "sonny", Email = "asdf", PlayerID = "312adfs", Side = "X" },
-        //        new Player {Name = "donny", Email = "dsdf", PlayerID = "3fff2adfs", Side = "O" }
-        //    };
+        [TestMethod]
+        public void CheckWinConditions()
+        {
+            //Arrange 
+            Gameengine.User[] player =
+                {
+                new User {Name = "sonny", Email = "asdf", PlayerID = "312adfs", Side = "X" },
+                new User {Name = "donny", Email = "dsdf", PlayerID = "3fff2adfs", Side = "O" }
+            };
 
-        //    Player[] board = new Player[9];
-        //    {
-        //        board[1] = player[1];
-        //        board[2] = player[1];
-        //        board[3] = player[1];
-        //        board[4] = player[2];
-        //        board[5] = player[1];
-        //        board[6] = player[2];
-        //        board[7] = player[2];
-        //        board[8] = player[2];
-        //        board[9] = player[1];
+            User[] board = new User[9];
+            {
+                board[1] = player[1];
+                board[2] = player[1];
+                board[3] = player[1];
+                board[4] = player[2];
+                board[5] = player[1];
+                board[6] = player[2];
+                board[7] = player[2];
+                board[8] = player[2];
+                board[9] = player[1];
 
-        //    };
-        //    var expectedResult = player[1].Name + " has won!";
-        //    //Act
-        //    var actualResult = GameSession.WinConditions(board, player[1]);
-        //    //Assert
-        //    Assert.AreEqual(expectedResult, actualResult);
-        //}
+            };
+            var expectedResult = player[1].Name + " has won!";
+            //Act
+            var actualResult = gameSession.WinConditions(); //board, player[1]
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
+        public void CheckingWhoseTurn()
+        {
+            //Arrange 
+            Gameengine.User[] player =
+        {
+                new User {Name = "sonny", Email = "asdf", PlayerID = "312adfs", Side = "X" },
+                new User {Name = "donny", Email = "dsdf", PlayerID = "3fff2adfs", Side = "O" }
+            };
+            User[] board = new User[9];
+            {
+                board[1] = player[1];
+                board[2] = player[1];
+                board[3] = player[1];
+                board[4] = player[2];
+                board[5] = player[1];
+                board[6] = player[2];
+                board[7] = player[2];
+                board[8] = player[2];
+                board[9] = player[1];
+
+            };
+            bool FirstPlayerTurn = true;
+            string cookieValue = "s1df23sd21fds21f2sd3f";
+            string buttonClick = "5";
+            var expectedResult = FirstPlayerTurn == false;
+            //Act
+            gameSession.Turn(cookieValue, buttonClick);
+            var actualResult = FirstPlayerTurn;
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
 
     }
 }
