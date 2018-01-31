@@ -17,8 +17,6 @@ namespace OnlineLudoGame.Controllers
         // GET: Home        
         public ActionResult StartPage()
         {
-            //if (Request.Cookies["User"] == null)
-            //{
             HttpCookie cookie = new HttpCookie("User");
             Guid guid = Guid.NewGuid();
             cookie.Value = guid.ToString();
