@@ -3,6 +3,12 @@
 
 ## How are your board game build?
 
+#### This board game is built with MVC-Framework, where Models contains all classes that define our objects, Views contain the cshtml-files for showing the output to the user and Controller redirects information between the interaction on the screen and gameenginge logic.
+#### We have added a unit-test project, for testing the gameengine-methods.
+#### Comments are added in VS to generate API-Documentation, with the run doc.fx- function, as Gameengine Documentation. There can also User stories and this Architecture be found.
+#### The Gameengine is built so that the Lobby-, ActiveGame-, User-class can be reused in other games. Our GameSesson-class needs a few alterations with the rules, but is a good base for other projects. Models need small adjustments.
+#### Below is a step by step review of the game:
+
 > The game starts with a cookie being set in the HomeController.The StartPage view is returned to the user.
 >
 > The user enters his Player-Model data, and chooses between Starting A Game, and Joining A Game.
