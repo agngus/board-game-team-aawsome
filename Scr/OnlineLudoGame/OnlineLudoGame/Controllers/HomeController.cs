@@ -23,7 +23,6 @@ namespace OnlineLudoGame.Controllers
             cookie.Expires = DateTime.Now.AddDays(2);
             cookie.Path = "";
             Response.SetCookie(cookie);
-            //}
             return View();
         }
 
