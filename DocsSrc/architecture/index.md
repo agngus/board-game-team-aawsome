@@ -23,9 +23,9 @@
 >
 > The player is added to this object and set as player 1 in a PendingGame-array. 
 >
-> The system redirects to Game-mode and loops through the methods there: the GetSession-method checks for an exisiting game in ActiveGame, but since it's NULL, it searches through PendingGame.
+> The system redirects to Game-mode and loops through the methods there: the GetSession-method checks for an exisiting game in ActiveGame, but since it's NULL, it searches through PendingGame and and returns a certain GameSession object depending on the users cookie value. 
 >
-> Then it checks if ActiveGame is True (i.e. there are two players).
+> Then it checks if ActiveGame is True (i.e. there are two players). 
 > 
 > It skips the WinCondition-method, since ActiveGame is False.
 >
@@ -39,9 +39,9 @@
 
 > When **Join-button** is pressed, the FindGame-method is called, User Name and Email is set, cookieID will be PlayerID and letter "X" as Player.Side.
 >
-> FindGame-method is called that sets the Player 2 as the second player in the PendingGame-array.
+> FindGame-method is called that sets the Player 2 as the second player in the PendingGame list.
 >
-> Arrayposition[0] is now filled and is removed from the PendingGame-array.
+> Arrayposition[0] is now filled and is added to the ActiveGame list and removed from the PendingGame list.
 >
 > **Player 2 is redirected to the Game View and the GAME CAN BEGIN**.
 >
@@ -49,7 +49,7 @@
 >
 > Player 2 makes a buttonclick and the PlayerMove-method is called and checks first with the GetSession-method by the cookieID, which existing game it is a part of.
 >
-> The Turn-method is called to check if the PlayerID-value is set to "true". In that case the method allows the buttonclick. The method ends with swaping the value to "false" and continues. This is to prevent the same player of making two moves in a row.
+> The Turn-method is called to check if the PlayerID-value is set to "true". In that case the method allows the buttonclick. The method ends with swapping the value to "false" and continues. This is to prevent the same player of making two moves in a row.
 >
 > The cursor then enters the WinCondition-method to check if the gamesession in this stage has a winning row.
 >
@@ -61,7 +61,6 @@
 >
 > If WinConditions are met, the GameSession is redirected to EndGame-method, where it allows the Game-methods to loop one last time to update the opponent a fresh board with a message to the winning player.
 >
-> GameSession is ended with the cookie expiring.
 
 
 ## Which components does your application consist of?
@@ -76,7 +75,12 @@ Two Models:
 * Board: Contains GameID, Cells, Player and Win
 
 One Controller:
-* HomeController: Contains all links between gameenging and view.
+* HomeController: Contains five ActionResult. 
+ * StartPage, sets the cookie.
+ * LoginUser, checks if user want to star or join a game.
+ * Game, sends the board state to the view
+ * EndGame, sends EndGame board state to the view
+ * PlayerMove, recieves input from view and alters the gamesession object board array.
 
 One Gameengine:
 
