@@ -1,4 +1,4 @@
-
+ 
 # Board game architecture
 
 ## How are your board game build?
@@ -23,9 +23,11 @@
 >
 > The player is added to this object and set as player 1 in a PendingGame-array. 
 >
-> The system redirects to Game-mode and loops through the methods there: the GetSession-method checks for an exisiting game, but since it's NULL, it returns empty.
+> The system redirects to Game-mode and loops through the methods there: the GetSession-method checks for an exisiting game in ActiveGame, but since it's NULL, it searches through PendingGame.
 >
-> It loops though an empty WinConditions and into the Writeboard-method where the array of nine boxes is created and then checked that there is an active gamesession awaiting, which it is now.
+> Then it checks if ActiveGame is True (i.e. there are two players).
+> 
+> It skips the WinCondition-method, since ActiveGame is False.
 >
 > A Board-object is then created and set to empty strings, instead of NULL, awaiting to be filled by Player-objects clicking on the gameboard.
 >
